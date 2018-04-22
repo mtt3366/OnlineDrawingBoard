@@ -2,71 +2,133 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>OnlineDrawingBoard by MTT</title>
+    <title>DrawingBoard By MTT</title>
     <style>
         body{
             margin: 0;
-            padding: 0;
         }
         #canvas{
-            background:powderblue;
-            height: 100vh;
-            position: relative;
+            /*canvas和img一样,是dispaly:inline-block,如果把他改成block,大小不了变,就像img不会随着变成bloc而拉伸*/
+            background: green;
+            display: block;
+            /*没用,不会拉伸,不会变成块级元素*/
+            /*height: 100vh;*/
+            /*会整体放大,等比例的,和图片一样,整个画布连同里面画的图像,都会放大,所以只能在元素来设置属性,不能css样式来控制他*/
         }
-        /*.d11{*/
-            /*position: absolute;*/
-            /*left: xpx;*/
-            /*right: ypx;*/
-            /*color: #000;*/
+        /*.point{*/
             /*width: 6px;*/
             /*height: 6px;*/
             /*border-radius: 3px;*/
+            /*background-color: black;*/
+            /*display: inline-block;*/
+            /*position: absolute;*/
+            /*left: xpx;*/
+            /*top: ypx;*/
         /*}*/
     </style>
 </head>
 <body>
-    <div class="canvas" id="canvas">
+    <canvas id="canvas" width="500px" height="500px">
 
-    </div>
+    </canvas>
+    <script>
+
+
+        // 顺序:获取canvas,获取上下文,使用
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");//获取2d上下文,上下文就是环境,环境里面有一些方法,API,用来画图
+
+        var drawing = false;
+
+        drawLine(100,100,300,500,10);
+
+        canvas.onmousedown = function (e) {
+            drawing = true;
+            var x = e.clientX;
+            var y = e.clientY;
+            lastPoint = {//上一个点
+                'x':x,
+                'y':y
+            };
+            drawCircle(x,y,2);
+        };
+
+        canvas.onmousemove = function (e) {
+            if(drawing){
+                var x = e.clientX;
+                var y = e.clientY;
+                newPoint = {
+                    'x':x,
+                    'y':y
+                };
+
+                drawCircle(x,y,2);
+                //老点与新点连线
+                drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y,2);
+                lastPoint = newPoint;//把现在这个新点变为下一个的老点.
+            }
+        };
+
+        canvas.onmouseup = function () {
+            drawing = false;
+        };
+
+        //画线
+        function drawLine(beginx,beginy,endx,endy,lineWidth) {//开始xy,结束xy,线宽度
+            context.beginPath();
+            context.moveTo(beginx,beginy);
+            context.lineWidth = lineWidth;//先声明线的长度,不然他直接画了
+            context.lineTo(endx,endy);
+            context.stroke();
+            context.closePath();
+        }
+        function drawCircle(x,y,radius) {//画圆函数 ,xy圆心,radius半径
+            context.beginPath();
+            context.fillStyle = 'red';
+            context.arc(x,y,radius,0,Math.PI*2);
+            context.fill();
+        }
+        /*
+
+        学习API
+        //学习API
+        // 1.画矩形
+        context.fillStyle = 'red';//填充颜色
+        context.fillRect(0, 0, 100, 100,);//填充矩形
+
+        context.fillStyle = 'black';
+        context.fillRect(25,25,100,100);//第二次写颜色,就是第二个矩形的
+
+        context.clearRect(45,45,60,60);
+
+        context.strokeStyle = 'yellow';
+        context.strokeRect(50,50,50,50);//只有框
+
+        // 2.路径填充
+        context.beginPath();
+        context.moveTo(240,240);//把笔移动到240240
+        context.lineTo(300,240);//开始画线
+        context.lineTo(300,300);
+        context.fill();//自动填充
+
+        //3.画圆
+        context.beginPath();
+        context.arc(250,250,30,0,Math.PI*2);//π/2是90°
+        // rc(x, y, radius, startAngle, endAngle, anticlockwise)
+        // 画一个以（x,y）为圆心的以radius为半径的圆弧（圆），从startAngle开始到endAngle结束，按照anticlockwise给定的方向（默认为顺时针）来生成。
+        //参数anticlockwise为一个布尔值。为true时，是逆时针方向，否则顺时针方向。
+        context.fill();//自动填充
+        // context.stroke();//描边,不填充
+
+        // canvas.onmousemove = function (e) {
+        //     var x = e.clientX;
+        //     var y = e.clientY;
+        //     context.fillStyle = 'red';//填充颜色
+        //     context.fillRect(x-3, y-3, 6, 6);//填充矩形
+        // }
+
+        */
+
+    </script>
 </body>
-
-<script>
-    var canvas = document.getElementById('canvas');
-
-    var painting = false;//是否在画画的标记,开始是不画画,也就是一个状态
-
-    canvas.onmousedown = function(down){
-        painting = true;
-    };
-
-    canvas.onmousemove = function (move) {
-       if(painting){
-           var x = move.clientX;
-           var y = move.clientY;
-           var point = document.createElement("div");
-           point.style = "position: absolute;\n" +
-               "            left: "+(x-3)+"px;\n" +
-               "            top: "+(y-3)+"px;\n" +
-               "            background-color: #000;\n" +
-               "            width: 6px;\n" +
-               "            height: 6px;\n" +
-               "            border-radius: 3px;";
-           canvas.appendChild(point);
-
-           // 浏览器在检查onmousemove的间隔是固定的,画的太快,就会变成不连续的小点
-       }
-    };
-    canvas.onmouseup = function(up){
-        painting = false;
-    };
-</script>
-<!--知识点:什么是API,API就是别人提供给你的,-->
-<!--getElementById-->
-<!--createElement-->
-<!--appendChild-->
-<!--point.style-->
-<!--这些都是浏览器提供给我们的,一些现成的可以调用的东西-->
-<!--只要别人提供给你的,可以调用的东西,就叫API-->
-<!--canvas.onmousemove-->
-<!--onmousemove就是浏览器提供给我们的可以监听鼠标移动的API-->
 </html>
