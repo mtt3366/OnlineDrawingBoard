@@ -15,86 +15,73 @@
             /*height: 100vh;*/
             /*会整体放大,等比例的,和图片一样,整个画布连同里面画的图像,都会放大,所以只能在元素来设置属性,不能css样式来控制他*/
         }
-        #eraser{
+        .actions{
             position: fixed;
             left: 0;
             bottom: 0;
         }
+
+        #brush{
+            display: none;
+        }
+
+        .actions.usingeraser > #eraser{
+            display: none;
+
+        }
+        .actions.usingeraser > #brush{
+            display: inline-block;
+        }
+
+
     </style>
 </head>
 <body>
     <canvas id="canvas" width="500px" height="500px"></canvas>
-    <button id="eraser">橡皮擦</button>
+    <div class="actions" id="actions">
+        <button id="eraser">橡皮擦</button>
+        <button id="brush">画笔</button>
+    </div>
     <script>
-        // 顺序:获取canvas,获取上下文,使用
+        //优化,所有的配置都可以用hash记下来.然后用户点击的时候,改颜色就行了
+
+        // 顺序:获取canvas
         var canvas = document.getElementById("canvas");
-
-        //设置canvas宽高为窗口宽高
-        setScreenWidthandHeight();
-        //监听用户窗口大小拖动事件
-        window.onresize = function (e) {
-            setScreenWidthandHeight();
-        };
-
         var context = canvas.getContext("2d");//获取2d上下文,上下文就是环境,环境里面有一些方法,API,用来画图
 
-        /**
-         * 理清是否用画板和是否用橡皮的逻辑
-         * 首先画笔默认开启.isUsingEraser = false就是在用画笔,true就是在用橡皮擦
-         *
-         * 1.onmousedown时,isUsingBoard = true,肯定在用,不管是用的画笔还是橡皮擦,画板肯定在用,这时候区别画笔和橡皮就用if(isUsingEraser)就行了.
-         * 2.onmousemove时有两层逻辑.首先if(isUsingBoard)判断是否在用画板,用就进入内部,没用就什么都不写.然后内部判断是否在用橡皮,if(isUsingEraser){}
-         * 3.onmouseup时,只有一层逻辑,就是肯定不用画板了,不管他橡皮用不用.
-         */
+        // 1.自动设置canvasSize
+        autoSetCanvasSize(canvas);
+
         var isUsingBoard = false;
         var isUsingEraser = false;
-        var button = document.getElementById('eraser');
-        button.onclick = function(){
-            isUsingEraser = !isUsingEraser;
-        };
+        // 2.监听鼠标事件
+        listenToMouse(canvas);
 
-        canvas.onmousedown = function (e) {
-            var x = e.clientX;
-            var y = e.clientY;
-            isUsingBoard = true;
-            if(isUsingEraser){//
-                context.clearRect(x-5,y-5,10,10);
-            }else{//不用橡皮,用画笔
-                lastPoint = {//上一个点
-                    'x':x,
-                    'y':y
-                };
-                drawCircle(x,y,1);
-            }
+
+        /**
+         * 理清  用画笔,用橡皮的思路
+         * 1. 首先画笔是隐藏的,最开始只有橡皮
+         * 2. 点击橡皮,(1)isUsingEraser = true,(2)画笔出现橡皮消失
+         * 2. 点击画笔,(1)isUsingEraser = false,(2)橡皮出现画笔消失
+         */
+        var eraser = document.getElementById('eraser');
+        var brush = document.getElementById("brush");
+        var actions = document.getElementById('actions');
+        eraser.onclick = function(){
+            isUsingEraser = true;
+            actions.className = 'actions usingeraser';
 
         };
-
-        canvas.onmousemove = function (e) {
-            var x = e.clientX;
-            var y = e.clientY;
-            if(isUsingBoard){
-                if(isUsingEraser){
-                    context.clearRect(x-5,y-5,10,10);
-                }else {//不用橡皮,用画笔
-                    newPoint = {//设置成全局变量,好能接受的到
-                        'x':x,
-                        'y':y
-                    };
-
-                    // drawCircle(x,y,1);//半径是1px,直径就是2px
-                    //实际上不需要这个圈,因为不管有没有这个圈,他都会连线.所以删掉这句代码,也不影响
-
-                    //老点与新点连线
-                    drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y,2);
-                    lastPoint = newPoint;//把现在这个新点变为下一个的老点.
-                }
-            }
+        brush.onclick = function () {
+            isUsingEraser = false;
+            actions.className = 'actions';
         };
 
-        canvas.onmouseup = function () {
-            isUsingBoard = false;
-        };
 
+
+
+
+        // 函数
         //画线
         function drawLine(beginx,beginy,endx,endy,lineWidth) {//开始xy,结束xy,线宽度
             context.beginPath();
@@ -112,13 +99,74 @@
             context.arc(x,y,radius,0,Math.PI*2);
             context.fill();
         }
-        //设置canvas高宽为屏幕宽高
-        function setScreenWidthandHeight() {
 
-            var pagex = document.documentElement.clientWidth;//获取页面宽度
-            var pagey = document.documentElement.clientHeight;//获取页面高度
-            canvas.width = pagex;
-            canvas.height = pagey;//这两个是属性值,不是css里面的样式,如果用样式,那么就是canvas.style
+        function autoSetCanvasSize(canvas) {//自动设置canvas函数
+            //设置canvas宽高为窗口宽高
+            setCanvasSize();
+            //监听用户窗口大小拖动事件
+            window.onresize = function (e) {
+                setCanvasSize();
+            };
+            //设置canvas高宽为屏幕宽高函数
+            function setCanvasSize() {
+
+                var pagex = document.documentElement.clientWidth;//获取页面宽度
+                var pagey = document.documentElement.clientHeight;//获取页面高度
+                canvas.width = pagex;
+                canvas.height = pagey;//这两个是属性值,不是css里面的样式,如果用样式,那么就是canvas.style
+            }
+        }
+
+        function listenToMouse(canvas) {
+            /**
+             * 理清是否用画板和是否用橡皮的逻辑
+             * 首先画笔默认开启.isUsingEraser = false就是在用画笔,true就是在用橡皮擦
+             *
+             * 1.onmousedown时,isUsingBoard = true,肯定在用,不管是用的画笔还是橡皮擦,画板肯定在用,这时候区别画笔和橡皮就用if(isUsingEraser)就行了.
+             * 2.onmousemove时有两层逻辑.首先if(isUsingBoard)判断是否在用画板,用就进入内部,没用就什么都不写.然后内部判断是否在用橡皮,if(isUsingEraser){}
+             * 3.onmouseup时,只有一层逻辑,就是肯定不用画板了,不管他橡皮用不用.
+             */
+
+            canvas.onmousedown = function (e) {
+                var x = e.clientX;
+                var y = e.clientY;
+                isUsingBoard = true;
+                if(isUsingEraser){//
+                    context.clearRect(x-5,y-5,10,10);
+                }else{//不用橡皮,用画笔
+                    lastPoint = {//上一个点
+                        'x':x,
+                        'y':y
+                    };
+                    drawCircle(x,y,1);
+                }
+
+            };
+
+            canvas.onmousemove = function (e) {
+                var x = e.clientX;
+                var y = e.clientY;
+                if(isUsingBoard){
+                    if(isUsingEraser){
+                        context.clearRect(x-5,y-5,10,10);
+                    }else {//不用橡皮,用画笔
+                        newPoint = {//设置成全局变量,好能接受的到
+                            'x':x,
+                            'y':y
+                        };
+                        // drawCircle(x,y,1);//半径是1px,直径就是2px
+                        //实际上不需要这个圈,因为不管有没有这个圈,他都会连线.所以删掉这句代码,也不影响
+
+                        //老点与新点连线
+                        drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y,2);
+                        lastPoint = newPoint;//把现在这个新点变为下一个的老点.
+                    }
+                }
+            };
+
+            canvas.onmouseup = function () {
+                isUsingBoard = false;
+            };
         }
         /*
 

@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="675471fe-b21e-4450-9aa2-c0e3e77d8200" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/divBoardTest.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
@@ -33,9 +32,15 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="67" column="55" lean-forward="true" selection-start-line="67" selection-start-column="55" selection-end-line="67" selection-end-column="55" />
+            <state relative-caret-position="480">
+              <caret line="75" column="34" lean-forward="true" selection-start-line="75" selection-start-column="34" selection-end-line="75" selection-end-column="34" />
               <folding>
+                <element signature="e#132#156#0" />
+                <element signature="e#3011#3316#0" />
+                <element signature="e#3370#3553#0" />
+                <element signature="e#3477#4022#0" />
+                <element signature="e#2421#2445#0" />
+                <element signature="e#2448#2825#0" />
                 <element signature="e#1076#2271#0" />
                 <element signature="e#1675#1684#0" />
                 <element signature="e#1359#1397#0" />
@@ -65,6 +70,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>ctx</find>
+      <find>drawing</find>
     </findStrings>
     <replaceStrings>
       <replace>context</replace>
@@ -159,7 +165,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1524361213115</updated>
-      <workItem from="1524361214716" duration="14981000" />
+      <workItem from="1524361214716" duration="20846000" />
     </task>
     <task id="LOCAL-00001" summary="添加onmousedown move up事件,可以画出不连续的小点">
       <created>1524365896227</created>
@@ -175,17 +181,31 @@
       <option name="project" value="LOCAL" />
       <updated>1524366595608</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="使用 canvas,画出点,点之间连线">
+      <created>1524403877356</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1524403877356</updated>
+    </task>
+    <task id="LOCAL-00004" summary="1画板宽高设置为浏览器窗口宽高&#10;2添加橡皮擦,理清是否用画板和是否用橡皮的逻辑">
+      <created>1524407073798</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1524407073798</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14981000" />
+    <option name="totallyTimeSpent" value="20846000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="986" y="0" width="1006" height="1158" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1556701" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.1556701" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
@@ -212,7 +232,21 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加onmousedown move up事件,可以画出不连续的小点" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加onmousedown move up事件,可以画出不连续的小点" />
+    <MESSAGE value="使用 canvas,画出点,点之间连线" />
+    <MESSAGE value="1画板宽高设置为浏览器窗口宽高&#10;2添加橡皮擦,理清是否用画板和是否用橡皮的逻辑" />
+    <option name="LAST_COMMIT_MESSAGE" value="1画板宽高设置为浏览器窗口宽高&#10;2添加橡皮擦,理清是否用画板和是否用橡皮的逻辑" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/index.html</url>
+          <line>117</line>
+          <properties lambdaOrdinal="-1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/divBoardTest.html">
@@ -238,9 +272,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="67" column="55" lean-forward="true" selection-start-line="67" selection-start-column="55" selection-end-line="67" selection-end-column="55" />
+        <state relative-caret-position="480">
+          <caret line="75" column="34" lean-forward="true" selection-start-line="75" selection-start-column="34" selection-end-line="75" selection-end-column="34" />
           <folding>
+            <element signature="e#132#156#0" />
+            <element signature="e#3011#3316#0" />
+            <element signature="e#3370#3553#0" />
+            <element signature="e#3477#4022#0" />
+            <element signature="e#2421#2445#0" />
+            <element signature="e#2448#2825#0" />
             <element signature="e#1076#2271#0" />
             <element signature="e#1675#1684#0" />
             <element signature="e#1359#1397#0" />
