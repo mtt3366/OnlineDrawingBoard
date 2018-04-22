@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transition过渡效果</title>
+    <style>
+        #button:hover{
+
+        }
+        .box{
+            width: 50px;
+            height: 50px;
+            background: red;
+            transition: all 1s;
+            position: relative;
+            left: 0;
+            border-radius:50%;
+            /*opacity: 0.1;*/
+            /*z-index: -1;*/
+            transform: rotate(0deg);
+            content: "+";
+        }
+
+        .hiden{
+            left:100px;
+            border-radius:0;
+            width: 100px;
+            height: 100px;
+            background: aqua;
+            /*opacity: 1;*/
+            /*z-index: 1;*/
+            transform: rotate(90deg);
+        }
+        .out{
+            width: 500px;
+            height: 500px;
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="button">
+<div class="out">
+    <div class="box" id="box">
+
+    </div>
+</div>
+
+<script>
+    var button = document.getElementById("button");
+    var box = document.getElementById("box");
+    button.onclick = function (e) {
+        if(box.className==="box"){
+            box.className = "box hiden";
+        }else {
+            box.className = 'box';
+        }
+    }
+</script>
+</body>
+</html>
