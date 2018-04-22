@@ -3,8 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>OnlineDrawingBoard by MTT</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #canvas{
+            background:powderblue;
+            height: 100vh;
+            position: relative;
+        }
+        /*.d11{*/
+            /*position: absolute;*/
+            /*left: xpx;*/
+            /*right: ypx;*/
+            /*color: #000;*/
+            /*width: 6px;*/
+            /*height: 6px;*/
+            /*border-radius: 3px;*/
+        /*}*/
+    </style>
 </head>
 <body>
-    .cover
+    <div class="canvas" id="canvas">
+
+    </div>
 </body>
+
+<script>
+    var canvas = document.getElementById('canvas');
+
+    var painting = false;//是否在画画的标记,开始是不画画,也就是一个状态
+
+    canvas.onmousedown = function(down){
+        painting = true;
+    };
+
+    canvas.onmousemove = function (move) {
+       if(painting){
+           var x = move.clientX;
+           var y = move.clientY;
+           var point = document.createElement("div");
+           point.style = "position: absolute;\n" +
+               "            left: "+(x-3)+"px;\n" +
+               "            top: "+(y-3)+"px;\n" +
+               "            background-color: #000;\n" +
+               "            width: 6px;\n" +
+               "            height: 6px;\n" +
+               "            border-radius: 3px;";
+           canvas.appendChild(point);
+
+           // 浏览器在检查onmousemove的间隔是固定的,画的太快,就会变成不连续的小点
+       }
+    };
+    canvas.onmouseup = function(up){
+        painting = false;
+    };
+</script>
+<!--知识点:什么是API,API就是别人提供给你的,-->
+<!--getElementById-->
+<!--createElement-->
+<!--appendChild-->
+<!--point.style-->
+<!--这些都是浏览器提供给我们的,一些现成的可以调用的东西-->
+<!--只要别人提供给你的,可以调用的东西,就叫API-->
+<!--canvas.onmousemove-->
+<!--onmousemove就是浏览器提供给我们的可以监听鼠标移动的API-->
 </html>
