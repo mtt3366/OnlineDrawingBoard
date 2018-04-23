@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+}
+#canvas{
+    /*canvas和img一样,是dispaly:inline-block,如果把他改成block,大小不了变,就像img不会随着变成bloc而拉伸*/
+    background: green;
+    display: block;
+    /*没用,不会拉伸,不会变成块级元素*/
+    /*height: 100vh;*/
+    /*会整体放大,等比例的,和图片一样,整个画布连同里面画的图像,都会放大,所以只能在元素来设置属性,不能css样式来控制他*/
+}
+.actions{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+#brush{
+    display: none;
+}
+
+.actions.usingeraser > #eraser{
+    display: none;
+
+}
+.actions.usingeraser > #brush{
+    display: inline-block;
+}
