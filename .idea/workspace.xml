@@ -4,8 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/index2.html" line="13" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="675471fe-b21e-4450-9aa2-c0e3e77d8200" name="Default" comment="添加不让手机端滚动js代码">
+    <list default="true" id="675471fe-b21e-4450-9aa2-c0e3e77d8200" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -23,8 +24,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+            <state relative-caret-position="320">
+              <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -32,10 +33,15 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="178" column="4" lean-forward="true" selection-start-line="178" selection-start-column="4" selection-end-line="178" selection-end-column="4" />
+            <state relative-caret-position="256">
+              <caret line="238" column="1" lean-forward="true" selection-start-line="238" selection-start-column="1" selection-end-line="238" selection-end-column="1" />
               <folding>
+                <element signature="n#!!block;n#drawLine#0" />
                 <element signature="n#!!block;n#drawCircle#0" />
+                <element signature="n#!!block;n#autoSetCanvasSize#0" />
+                <element signature="e#1405#1419#0" />
+                <element signature="e#1950#1998#0" />
+                <element signature="n#!!block;n#setCanvasSize#0;n#!!block;n#autoSetCanvasSize#0" />
                 <element signature="e#2232#2581#0" />
                 <element signature="e#4222#5411#0" />
               </folding>
@@ -71,6 +77,7 @@
       <find>autoSetCanvasSize</find>
       <find>listenToMouse</find>
       <find>drawLine</find>
+      <find>listenToUser</find>
     </findStrings>
     <replaceStrings>
       <replace>context</replace>
@@ -86,8 +93,8 @@
         <option value="$PROJECT_DIR$/index2.html" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/style.css" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -178,7 +185,7 @@
       <updated>1524361213115</updated>
       <workItem from="1524361214716" duration="21774000" />
       <workItem from="1524459100665" duration="831000" />
-      <workItem from="1524479362320" duration="7088000" />
+      <workItem from="1524479362320" duration="10372000" />
     </task>
     <task id="LOCAL-00001" summary="添加onmousedown move up事件,可以画出不连续的小点">
       <created>1524365896227</created>
@@ -250,11 +257,25 @@
       <option name="project" value="LOCAL" />
       <updated>1524485603087</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="添加不让手机端滚动js代码">
+      <created>1524487063109</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1524487063109</updated>
+    </task>
+    <task id="LOCAL-00012" summary="橡皮画笔的特性适配">
+      <created>1524487527300</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1524487527300</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29693000" />
+    <option name="totallyTimeSpent" value="32977000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="986" y="0" width="1006" height="1158" extended-state="0" />
@@ -293,29 +314,30 @@
     <MESSAGE value="移动端,touch特性控制,获取touch的触控坐标点" />
     <MESSAGE value="更新title" />
     <MESSAGE value="添加不让手机端滚动js代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加不让手机端滚动js代码" />
+    <MESSAGE value="橡皮画笔的特性适配" />
+    <option name="LAST_COMMIT_MESSAGE" value="橡皮画笔的特性适配" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/index.html</url>
-          <line>20</line>
+          <line>22</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/main.js</url>
-          <line>61</line>
+          <line>74</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/main.js</url>
-          <line>59</line>
+          <line>89</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -391,17 +413,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        <state relative-caret-position="320">
+          <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="178" column="4" lean-forward="true" selection-start-line="178" selection-start-column="4" selection-end-line="178" selection-end-column="4" />
+        <state relative-caret-position="256">
+          <caret line="238" column="1" lean-forward="true" selection-start-line="238" selection-start-column="1" selection-end-line="238" selection-end-column="1" />
           <folding>
+            <element signature="n#!!block;n#drawLine#0" />
             <element signature="n#!!block;n#drawCircle#0" />
+            <element signature="n#!!block;n#autoSetCanvasSize#0" />
+            <element signature="e#1405#1419#0" />
+            <element signature="e#1950#1998#0" />
+            <element signature="n#!!block;n#setCanvasSize#0;n#!!block;n#autoSetCanvasSize#0" />
             <element signature="e#2232#2581#0" />
             <element signature="e#4222#5411#0" />
           </folding>
