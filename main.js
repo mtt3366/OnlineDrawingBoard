@@ -218,6 +218,6 @@ context.fill();//自动填充
 // }
 
 */
-
+function stopScrolling( touchEvent ) {           touchEvent.preventDefault();       }      document.addEventListener( 'touchstart' , stopScrolling , false );      document.addEventListener( 'touchmove' , stopScrolling , false );
 
 
