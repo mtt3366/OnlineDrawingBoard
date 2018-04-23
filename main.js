@@ -218,6 +218,8 @@ context.fill();//自动填充
 // }
 
 */
-function stopScrolling( touchEvent ) {           touchEvent.preventDefault();       }      document.addEventListener( 'touchstart' , stopScrolling , false );      document.addEventListener( 'touchmove' , stopScrolling , false );
-
+var body = document.getElementsByTagName("body")[0];
+body.ontouchstart = function (ev) {
+    ev.preventDefault();
+}
 
