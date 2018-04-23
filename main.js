@@ -24,15 +24,28 @@ listenToUser(canvas);
 var eraser = document.getElementById('eraser');
 var brush = document.getElementById("brush");
 var actions = document.getElementById('actions');
-eraser.onclick = function(){
-    isUsingEraser = true;
-    actions.className = 'actions usingeraser';
 
-};
-brush.onclick = function () {
-    isUsingEraser = false;
-    actions.className = 'actions';
-};
+if(document.body.ontouchstart === undefined){
+    eraser.onclick = function(){
+        isUsingEraser = true;
+        actions.className = 'actions usingeraser';
+
+    };
+    brush.onclick = function () {
+        isUsingEraser = false;
+        actions.className = 'actions';
+    };
+}else{
+    eraser.ontouchstart = function(){
+        isUsingEraser = true;
+        actions.className = 'actions usingeraser';
+
+    };
+    brush.ontouchstart = function () {
+        isUsingEraser = false;
+        actions.className = 'actions';
+    };
+}
 
 
 
@@ -218,9 +231,10 @@ context.fill();//自动填充
 // }
 
 */
-// // 当touchstart的时候禁止屏幕滚动,添加不让手机端滚动js代码
-// var body = document.getElementsByTagName("body")[0];
-// body.ontouchmove = function (ev) {
-//     ev.preventDefault();
-// }
+
+// 当touchstart的时候禁止屏幕滚动,添加不让手机端滚动js代码
+var body = document.getElementsByTagName("body")[0];
+body.ontouchmove = function (ev) {
+    ev.preventDefault();
+}
 
