@@ -2,7 +2,8 @@
 <html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!--由于移动端会缩放980,所以加上mate标签使他不缩放-->
     <!--width=device-width页面宽度等于设备宽度,不要给我变成980-->
     <!--user-scalable=no 用户不可以双击缩放,因为我已经是1:1的了,不要给我缩放了-->
@@ -13,13 +14,21 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <canvas id="canvas" width="500px" height="500px"></canvas>
-    <div class="actions" id="actions">
-        <button id="eraser">橡皮擦</button>
-        <button id="brush">画笔</button>
-        <button id="clearcanvas">一件清平</button>
-        <div id="liveUp1">一键续命</div>
-    </div>
+<canvas id="canvas" width="500px" height="500px"></canvas>
+<div class="actions" id="actions">
+    <svg class="icon active" aria-hidden="true" id="brush">
+        <use xlink:href="#icon-pen"></use>
+    </svg>
+
+    <svg class="icon" aria-hidden="true" id="eraser">
+        <use xlink:href="#icon-xiangpica"></use>
+    </svg>
+
+    <svg class="icon" aria-hidden="true" id="clearcanvas">
+        <use xlink:href="#icon-shanchu"></use>
+    </svg>
+</div>
 </body>
+<script src="//at.alicdn.com/t/font_641982_zx408z7bmvrhpvi.js"></script>
 <script src="./main.js"></script>
 </html>

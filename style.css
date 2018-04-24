@@ -1,28 +1,53 @@
-body{
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+body {
     margin: 0;
 }
-#canvas{
+
+#canvas {
     /*canvas和img一样,是dispaly:inline-block,如果把他改成block,大小不了变,就像img不会随着变成bloc而拉伸*/
-    background: green;
+    background: #fff;
     display: block;
     /*没用,不会拉伸,不会变成块级元素*/
     /*height: 100vh;*/
     /*会整体放大,等比例的,和图片一样,整个画布连同里面画的图像,都会放大,所以只能在元素来设置属性,不能css样式来控制他*/
 }
-.actions{
+
+.actions {
     position: fixed;
     left: 0;
-    bottom: 0;
+    top: 0;
+    padding: 10px;
 }
 
-#brush{
-    display: none;
+.actions svg {
+    fill: black;
+    margin: 10px;
+    /*fill: #ff5113;*/
+    vertical-align: top;
+
+    transition: all 0.4s;
 }
 
-.actions.usingeraser > #eraser{
-    display: none;
+.actions svg:nth-child(1), svg:nth-child(3) {
+    width: 2em;
+    height: 2em;
+}
 
+.actions svg:nth-child(2) {
+    width: 2.5em;
+    height: 2.5em;
 }
-.actions.usingeraser > #brush{
-    display: inline-block;
+
+svg.active {
+    fill: #ff5113;
+    transform: scale(1.3);
+    /*变成原来的1.2倍*/
 }
+
