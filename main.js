@@ -25,6 +25,15 @@ var eraser = document.getElementById('eraser');
 var brush = document.getElementById("brush");
 var actions = document.getElementById('actions');
 
+var body = document.getElementsByTagName("body")[0];
+clearcanvas.onclick = function (e) {
+    context.clearRect(0, 0, body.clientWidth, body.clientHeight);
+    //
+    // console.log(body.clientWidth);
+    // console.log(body.clientHeight);
+}
+
+
 if (document.body.ontouchstart === undefined) {
     eraser.onclick = function () {
         isUsingEraser = true;
@@ -38,6 +47,7 @@ if (document.body.ontouchstart === undefined) {
         eraser.classList.remove("active");
         brush.classList.add("active");
     };
+
 } else {
     eraser.ontouchstart = function () {
         isUsingEraser = true;
@@ -51,34 +61,46 @@ if (document.body.ontouchstart === undefined) {
     };
 }
 
-red.onclick = redclick();
-red.ontouchstart = redclick();
-function redclick() {
-    context.strokeStyle = "red";
-    red.classList.add("active");
-    blue.classList.remove("active");
-    green.classList.remove("active");
+if (document.body.ontouchstart === undefined) {
+    red.onclick = function () {
+        context.strokeStyle = "red";
+        red.classList.add("active");
+        blue.classList.remove("active");
+        green.classList.remove("active");
+    }
+    green.onclick = function () {
+        context.strokeStyle = "green";
+        green.classList.add("active");
+        blue.classList.remove("active");
+        red.classList.remove("active");
+    }
+    blue.onclick = function () {
+        context.strokeStyle = "blue";
+        blue.classList.add("active");
+        red.classList.remove("active");
+        green.classList.remove("active");
+    }
 }
-
-green.onclick = gerrnclick();
-green.ontouchstart = greenclick();
-function greenclick() {
-    context.strokeStyle = "green";
-    green.classList.add("active");
-    blue.classList.remove("active");
-    red.classList.remove("active");
-
+else {
+    red.ontouchstart = function () {
+        context.strokeStyle = "red";
+        red.classList.add("active");
+        blue.classList.remove("active");
+        green.classList.remove("active");
+    }
+    green.ontouchstart = function () {
+        context.strokeStyle = "green";
+        green.classList.add("active");
+        blue.classList.remove("active");
+        red.classList.remove("active");
+    }
+    blue.ontouchstart = function () {
+        context.strokeStyle = "blue";
+        blue.classList.add("active");
+        red.classList.remove("active");
+        green.classList.remove("active");
+    }
 }
-
-blue.onclick = blueclick();
-blue.ontouchstart = blueclick();
-function blueclick() {
-    context.strokeStyle = "blue";
-    blue.classList.add("active");
-    red.classList.remove("active");
-    green.classList.remove("active");
-}
-
 
 // 函数
 //画线
@@ -270,11 +292,5 @@ context.fill();//自动填充
 var body = document.getElementsByTagName("body")[0];
 body.ontouchstart = function (ev) {
     ev.preventDefault();
-}
-clearcanvas.onclick = function (e) {
-    context.clearRect(0, 0, body.clientWidth, body.clientHeight);
-    //
-    // console.log(body.clientWidth);
-    // console.log(body.clientHeight);
 }
 */
