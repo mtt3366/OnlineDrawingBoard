@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="675471fe-b21e-4450-9aa2-c0e3e77d8200" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -22,8 +23,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="288">
+              <caret line="18" column="59" lean-forward="true" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -31,8 +32,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+            <state relative-caret-position="384">
+              <caret line="74" column="30" lean-forward="true" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -41,12 +42,9 @@
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="656">
-              <caret line="97" column="37" lean-forward="true" selection-start-line="97" selection-start-column="37" selection-end-line="98" selection-end-column="37" />
+              <caret line="62" column="34" lean-forward="true" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
               <folding>
-                <element signature="e#752#841#0" />
-                <element signature="e#875#952#0" />
-                <element signature="e#997#1086#0" />
-                <element signature="e#1125#1202#0" />
+                <element signature="e#2927#2962#0" />
               </folding>
             </state>
           </provider>
@@ -183,7 +181,7 @@
       <workItem from="1524361214716" duration="21774000" />
       <workItem from="1524459100665" duration="831000" />
       <workItem from="1524479362320" duration="11256000" />
-      <workItem from="1524569876563" duration="7973000" />
+      <workItem from="1524569876563" duration="11173000" />
     </task>
     <task id="LOCAL-00001" summary="添加onmousedown move up事件,可以画出不连续的小点">
       <created>1524365896227</created>
@@ -325,11 +323,25 @@
       <option name="project" value="LOCAL" />
       <updated>1524577608961</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="safair无法禁止滚动,只有qq上的浏览器才行">
+      <created>1524577916701</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1524577916701</updated>
+    </task>
+    <task id="LOCAL-00022" summary="添加黑色,并优化画笔逻辑,点颜色的时候自动切换到画笔">
+      <created>1524579568707</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1524579568707</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41834000" />
+    <option name="totallyTimeSpent" value="45034000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="986" y="0" width="1006" height="1158" extended-state="0" />
@@ -375,23 +387,25 @@
     <MESSAGE value="消除手机没发触发click事件的bug" />
     <MESSAGE value="禁止滚动测试" />
     <MESSAGE value="safair禁止滚动测试" />
-    <option name="LAST_COMMIT_MESSAGE" value="safair禁止滚动测试" />
+    <MESSAGE value="safair无法禁止滚动,只有qq上的浏览器才行" />
+    <MESSAGE value="添加黑色,并优化画笔逻辑,点颜色的时候自动切换到画笔" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加黑色,并优化画笔逻辑,点颜色的时候自动切换到画笔" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/index.html</url>
-          <line>38</line>
+          <line>39</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/main.js</url>
-          <line>131</line>
+          <line>178</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/main.js</url>
-          <line>147</line>
+          <line>194</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
@@ -411,10 +425,7 @@
         <state relative-caret-position="2320">
           <caret line="145" column="10" lean-forward="true" selection-start-line="145" selection-start-column="10" selection-end-line="145" selection-end-column="10" />
           <folding>
-            <element signature="e#752#841#0" />
-            <element signature="e#875#952#0" />
-            <element signature="e#997#1086#0" />
-            <element signature="e#1125#1202#0" />
+            <element signature="e#2927#2962#0" />
           </folding>
         </state>
       </provider>
@@ -489,29 +500,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/style.css">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+        <state relative-caret-position="288">
+          <caret line="18" column="59" lean-forward="true" selection-start-line="18" selection-start-column="59" selection-end-line="18" selection-end-column="59" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="384">
+          <caret line="74" column="30" lean-forward="true" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="656">
-          <caret line="97" column="37" lean-forward="true" selection-start-line="97" selection-start-column="37" selection-end-line="98" selection-end-column="37" />
+          <caret line="62" column="34" lean-forward="true" selection-start-line="62" selection-start-column="34" selection-end-line="62" selection-end-column="34" />
           <folding>
-            <element signature="e#752#841#0" />
-            <element signature="e#875#952#0" />
-            <element signature="e#997#1086#0" />
-            <element signature="e#1125#1202#0" />
+            <element signature="e#2927#2962#0" />
           </folding>
         </state>
       </provider>

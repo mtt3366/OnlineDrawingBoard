@@ -26,54 +26,41 @@ var brush = document.getElementById("brush");
 var actions = document.getElementById('actions');
 
 var body = document.getElementsByTagName("body")[0];
-clearcanvas.onclick = function (e) {
+clearcanvas.onclick = function () {
     context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 }
-
 
 if (document.body.ontouchstart === undefined) {
     eraser.onclick = function () {
         isUsingEraser = true;
         eraser.classList.add("active");
         brush.classList.remove("active");
-
-
     };
-    brush.onclick = function () {
-        isUsingEraser = false;
-        eraser.classList.remove("active");
-        brush.classList.add("active");
-    };
-
-
-
-
+    brush.onclick = beginUsingBurush;
 } else {
     eraser.ontouchstart = function () {
         isUsingEraser = true;
         eraser.classList.add("active");
         brush.classList.remove("active");
     };
-    brush.ontouchstart = function () {
-        isUsingEraser = false;
-        eraser.classList.remove("active");
-        brush.classList.add("active");
-    };
-
-
+    brush.ontouchstart = beginUsingBurush;
 }
 var color = document.getElementsByClassName("colors")[0];
 var colorLiArr = color.getElementsByTagName('li');
 
-function cleanColorActive() {
+function beginUsingBurush() {
+    isUsingEraser = false;
+    eraser.classList.remove("active");
+    brush.classList.add("active");
+}
+
+function cleanColorActive() {//清除所有颜色按钮的放大状态
     for (let i = 0; i < colorLiArr.length; i++) {
         colorLiArr[i].classList.remove("active");
     }
 }
 
 function addColorClickEvent() {
-
-
     for (let i = 0; i < colorLiArr.length; i++) {
         colorLiArr[i].onclick = function () {
             context.strokeStyle = this.id;
@@ -174,7 +161,7 @@ function drawLine(beginx, beginy, endx, endy, lineWidth) {//开始xy,结束xy,�
 //画圈
 function drawCircle(x, y, radius) {//画圆函数 ,xy圆心,radius半径
     context.beginPath();
-    context.fillStyle = 'black';
+    // context.fillStyle = 'black';
     context.arc(x, y, radius, 0, Math.PI * 2);
     context.fill();
 }
