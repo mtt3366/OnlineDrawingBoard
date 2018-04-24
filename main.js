@@ -24,6 +24,7 @@ listenToUser(canvas);
 var eraser = document.getElementById('eraser');
 var brush = document.getElementById("brush");
 var actions = document.getElementById('actions');
+var clearcanvas = document.getElementById("clearcanvas");
 
 var body = document.getElementsByTagName("body")[0];
 clearcanvas.onclick = function () {
@@ -31,64 +32,15 @@ clearcanvas.onclick = function () {
 }
 
 if (document.body.ontouchstart === undefined) {
-    eraser.onclick = function () {
-        isUsingEraser = true;
-        eraser.classList.add("active");
-        brush.classList.remove("active");
-    };
-    brush.onclick = beginUsingBurush;
+    eraser.onclick = beginUsingEraser;
+    brush.onclick = beginUsingBrush;
 } else {
-    eraser.ontouchstart = function () {
-        isUsingEraser = true;
-        eraser.classList.add("active");
-        brush.classList.remove("active");
-    };
-    brush.ontouchstart = beginUsingBurush;
+    eraser.ontouchstart = beginUsingEraser;
+    brush.ontouchstart = beginUsingBrush;
 }
+
 var color = document.getElementsByClassName("colors")[0];
 var colorLiArr = color.getElementsByTagName('li');
-
-function beginUsingBurush() {
-    isUsingEraser = false;
-    eraser.classList.remove("active");
-    brush.classList.add("active");
-}
-
-function cleanColorActive() {//清除所有颜色按钮的放大状态
-    for (let i = 0; i < colorLiArr.length; i++) {
-        colorLiArr[i].classList.remove("active");
-    }
-}
-
-function addColorClickEvent() {
-    for (let i = 0; i < colorLiArr.length; i++) {
-        colorLiArr[i].onclick = function () {
-            context.strokeStyle = this.id;
-            cleanColorActive();//清除其他颜色的活动
-            this.classList.add("active");
-
-            //把画笔弄成存在的
-            isUsingEraser = false;
-            eraser.classList.remove("active");
-            brush.classList.add("active");
-        }
-    }
-}
-
-function addColorTouchEvent() {
-
-
-    for (let i = 0; i < colorLiArr.length; i++) {
-        colorLiArr[i].ontouchstart = function () {
-            context.strokeStyle = this.id;
-            cleanColorActive();
-            this.classList.add("active");
-            isUsingEraser = false;
-            eraser.classList.remove("active");
-            brush.classList.add("active");
-        }
-    }
-}
 
 if (document.body.ontouchstart === undefined) {
     // red.onclick = function () {
@@ -139,7 +91,6 @@ else {
     //     cleanColorActive();
     //     black.classList.add("active");
     // }
-
     addColorTouchEvent();
     clearcanvas.ontouchstart = function (e) {
         context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
@@ -289,6 +240,50 @@ function listenToUser(canvas) {
 
 }
 
+
+function beginUsingBrush() { //用笔
+    isUsingEraser = false;
+    eraser.classList.remove("active");
+    brush.classList.add("active");
+}
+function beginUsingEraser() { //用橡皮
+    isUsingEraser = true;
+    eraser.classList.add("active");
+    brush.classList.remove("active");
+}
+
+function cleanColorActive() {//清除所有颜色按钮的放大状态
+    for (let i = 0; i < colorLiArr.length; i++) {
+        colorLiArr[i].classList.remove("active");
+    }
+}
+
+function addColorClickEvent() {//循环添加颜色点击事件
+    for (let i = 0; i < colorLiArr.length; i++) {
+        colorLiArr[i].onclick = function () {
+            context.strokeStyle = this.id;
+            context.fillStyle = this.id;
+            cleanColorActive();//清除其他颜色的活动
+            this.classList.add("active");
+            //把画笔弄成存在的
+            beginUsingBrush();
+        }
+    }
+}
+
+function addColorTouchEvent() {//循环添加颜色触摸事件
+    for (let i = 0; i < colorLiArr.length; i++) {
+        colorLiArr[i].ontouchstart = function () {
+            context.strokeStyle = this.id;
+            context.fillStyle = this.id;
+            cleanColorActive();
+            this.classList.add("active");
+            beginUsingBrush();
+        }
+    }
+}
+
+
 /*
 
 学习API
@@ -332,7 +327,7 @@ context.fill();//自动填充
 
 
 // 当touchstart的时候禁止屏幕滚动,添加不让手机端滚动js代码
-var body = document.getElementsByTagName("body")[0];
+// var body = document.getElementsByTagName("body")[0];
 body.ontouchstart = function (ev) {
     ev.preventDefault();
 }
