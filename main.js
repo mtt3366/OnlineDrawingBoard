@@ -27,10 +27,7 @@ var actions = document.getElementById('actions');
 
 var body = document.getElementsByTagName("body")[0];
 clearcanvas.onclick = function (e) {
-    context.clearRect(0, 0, body.clientWidth, body.clientHeight);
-    //
-    // console.log(body.clientWidth);
-    // console.log(body.clientHeight);
+    context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
 }
 
 
@@ -80,6 +77,10 @@ if (document.body.ontouchstart === undefined) {
         red.classList.remove("active");
         green.classList.remove("active");
     }
+
+    clearcanvas.onclick = function (e) {
+        context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+    }
 }
 else {
     red.ontouchstart = function () {
@@ -99,6 +100,10 @@ else {
         blue.classList.add("active");
         red.classList.remove("active");
         green.classList.remove("active");
+    }
+
+    clearcanvas.ontouchstart = function (e) {
+        context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
     }
 }
 
