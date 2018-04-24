@@ -51,20 +51,28 @@ if (document.body.ontouchstart === undefined) {
     };
 }
 
-red.onclick =function () {
+red.onclick = redclick();
+red.ontouchstart = redclick();
+function redclick() {
     context.strokeStyle = "red";
     red.classList.add("active");
     blue.classList.remove("active");
     green.classList.remove("active");
 }
-green.onclick =function () {
+
+green.onclick = gerrnclick();
+green.ontouchstart = greenclick();
+function greenclick() {
     context.strokeStyle = "green";
     green.classList.add("active");
     blue.classList.remove("active");
     red.classList.remove("active");
 
 }
-blue.onclick =function () {
+
+blue.onclick = blueclick();
+blue.ontouchstart = blueclick();
+function blueclick() {
     context.strokeStyle = "blue";
     blue.classList.add("active");
     red.classList.remove("active");
@@ -256,6 +264,8 @@ context.fill();//自动填充
 
 */
 
+
+/*
 // 当touchstart的时候禁止屏幕滚动,添加不让手机端滚动js代码
 var body = document.getElementsByTagName("body")[0];
 body.ontouchstart = function (ev) {
@@ -267,3 +277,4 @@ clearcanvas.onclick = function (e) {
     // console.log(body.clientWidth);
     // console.log(body.clientHeight);
 }
+*/
