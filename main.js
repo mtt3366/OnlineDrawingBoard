@@ -287,10 +287,10 @@ context.fill();//自动填充
 */
 
 
-/*
+
 // 当touchstart的时候禁止屏幕滚动,添加不让手机端滚动js代码
 var body = document.getElementsByTagName("body")[0];
 body.ontouchstart = function (ev) {
     ev.preventDefault();
 }
-*/
+
