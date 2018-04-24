@@ -79,6 +79,9 @@ svg.active {
     transition: all 0.4s;
 }
 
+.colors li#black{
+    background: black;
+}
 .colors li#red{
     background: red;
 }
@@ -88,6 +91,7 @@ svg.active {
 .colors li#green{
     background: green;
 }
+
 .colors .active{
     transform: scale(1.2);
     box-shadow: 0 0 2px 2px #898b8d;

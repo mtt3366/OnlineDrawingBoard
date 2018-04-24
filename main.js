@@ -45,6 +45,9 @@ if (document.body.ontouchstart === undefined) {
         brush.classList.add("active");
     };
 
+
+
+
 } else {
     eraser.ontouchstart = function () {
         isUsingEraser = true;
@@ -56,52 +59,101 @@ if (document.body.ontouchstart === undefined) {
         eraser.classList.remove("active");
         brush.classList.add("active");
     };
+
+
+}
+var color = document.getElementsByClassName("colors")[0];
+var colorLiArr = color.getElementsByTagName('li');
+
+function cleanColorActive() {
+    for (let i = 0; i < colorLiArr.length; i++) {
+        colorLiArr[i].classList.remove("active");
+    }
+}
+
+function addColorClickEvent() {
+
+
+    for (let i = 0; i < colorLiArr.length; i++) {
+        colorLiArr[i].onclick = function () {
+            context.strokeStyle = this.id;
+            cleanColorActive();//清除其他颜色的活动
+            this.classList.add("active");
+
+            //把画笔弄成存在的
+            isUsingEraser = false;
+            eraser.classList.remove("active");
+            brush.classList.add("active");
+        }
+    }
+}
+
+function addColorTouchEvent() {
+
+
+    for (let i = 0; i < colorLiArr.length; i++) {
+        colorLiArr[i].ontouchstart = function () {
+            context.strokeStyle = this.id;
+            cleanColorActive();
+            this.classList.add("active");
+            isUsingEraser = false;
+            eraser.classList.remove("active");
+            brush.classList.add("active");
+        }
+    }
 }
 
 if (document.body.ontouchstart === undefined) {
-    red.onclick = function () {
-        context.strokeStyle = "red";
-        red.classList.add("active");
-        blue.classList.remove("active");
-        green.classList.remove("active");
-    }
-    green.onclick = function () {
-        context.strokeStyle = "green";
-        green.classList.add("active");
-        blue.classList.remove("active");
-        red.classList.remove("active");
-    }
-    blue.onclick = function () {
-        context.strokeStyle = "blue";
-        blue.classList.add("active");
-        red.classList.remove("active");
-        green.classList.remove("active");
-    }
+    // red.onclick = function () {
+    //     context.strokeStyle = "red";
+    //     cleanColorActive();
+    //     red.classList.add("active");
+    //
+    // }
+    // green.onclick = function () {
+    //     context.strokeStyle = "green";
+    //     cleanColorActive();
+    //     green.classList.add("active");
+    // }
+    // blue.onclick = function () {
+    //     context.strokeStyle = "blue";
+    //     cleanColorActive();
+    //     blue.classList.add("active");
+    // }
+    // black.onclick = function(){
+    //     context.strokeStyle = "black";
+    //     cleanColorActive();
+    //     black.classList.add("active");
+    // }
+    addColorClickEvent();
 
     clearcanvas.onclick = function (e) {
         context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
     }
 }
 else {
-    red.ontouchstart = function () {
-        context.strokeStyle = "red";
-        red.classList.add("active");
-        blue.classList.remove("active");
-        green.classList.remove("active");
-    }
-    green.ontouchstart = function () {
-        context.strokeStyle = "green";
-        green.classList.add("active");
-        blue.classList.remove("active");
-        red.classList.remove("active");
-    }
-    blue.ontouchstart = function () {
-        context.strokeStyle = "blue";
-        blue.classList.add("active");
-        red.classList.remove("active");
-        green.classList.remove("active");
-    }
+    // red.ontouchstart = function () {
+    //     context.strokeStyle = "red";
+    //     cleanColorActive();
+    //     red.classList.add("active");
+    // }
+    // green.ontouchstart = function () {
+    //     context.strokeStyle = "green";
+    //     cleanColorActive();
+    //     green.classList.add("active");
+    // }
+    // blue.ontouchstart = function () {
+    //     context.strokeStyle = "blue";
+    //     cleanColorActive();
+    //     blue.classList.add("active");
+    // }
+    // black.ontouchstart = function () {
+    //     context.strokeStyle = "black";
+    //     cleanColorActive();
+    //     black.classList.add("active");
+    // }
 
+    addColorTouchEvent();
     clearcanvas.ontouchstart = function (e) {
         context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
     }
@@ -290,7 +342,6 @@ context.fill();//自动填充
 // }
 
 */
-
 
 
 // 当touchstart的时候禁止屏幕滚动,添加不让手机端滚动js代码
