@@ -1,3 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ul,ol{
+    list-style: none;
+}
 .icon {
     width: 1em;
     height: 1em;
@@ -49,5 +56,37 @@ svg.active {
     fill: #ff5113;
     transform: scale(1.3);
     /*变成原来的1.2倍*/
+
+}
+.colors{
+    width: 45px;
+    /*border: 1px solid red;*/
+    position: fixed;
+    top: 90px;
+    left: 16px;
+}
+.colors>li{
+    /*display: inline-block;*/
+    /*vertical-align: top;*/
+    width: 35px;
+    height: 35px;
+    /*border: 1px solid red;*/
+    margin-bottom: 20px;
+    border-radius: 50%;
+
+    transition: all 0.4s;
 }
 
+.colors li#red{
+    background: red;
+}
+.colors li#blue{
+    background: blue;
+}
+.colors li#green{
+    background: green;
+}
+.colors .active{
+    transform: scale(1.2);
+    box-shadow: 0 0 2px 2px #898b8d;
+}

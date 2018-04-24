@@ -51,13 +51,33 @@ if (document.body.ontouchstart === undefined) {
     };
 }
 
+red.onclick =function () {
+    context.strokeStyle = "red";
+    red.classList.add("active");
+    blue.classList.remove("active");
+    green.classList.remove("active");
+}
+green.onclick =function () {
+    context.strokeStyle = "green";
+    green.classList.add("active");
+    blue.classList.remove("active");
+    red.classList.remove("active");
+
+}
+blue.onclick =function () {
+    context.strokeStyle = "blue";
+    blue.classList.add("active");
+    red.classList.remove("active");
+    green.classList.remove("active");
+}
+
 
 // 函数
 //画线
 function drawLine(beginx, beginy, endx, endy, lineWidth) {//开始xy,结束xy,线宽度
     context.beginPath();
     context.lineWidth = lineWidth;//先声明线的长度,不然他直接画了
-    context.fillStyle = 'black';
+    // context.strokeStyle = 'black';  //注释掉是因为如果不写,默认是黑色
     context.moveTo(beginx, beginy);
     context.lineTo(endx, endy);
     context.stroke();
