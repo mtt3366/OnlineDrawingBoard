@@ -18,8 +18,15 @@ body {
     margin: 0;
     overflow: hidden;
     /*进制滚动*/
+    position: fixed;
+    top: 0;
+    left: 0;
 }
-
+html{
+    position: fixed;
+    top: 0;
+    left: 0;
+}
 #canvas {
     /*canvas和img一样,是dispaly:inline-block,如果把他改成block,大小不了变,就像img不会随着变成bloc而拉伸*/
     background: #fff;
