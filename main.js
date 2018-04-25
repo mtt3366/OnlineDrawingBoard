@@ -38,6 +38,7 @@ window.onload = function () { //打开网页先给画板一个白色的背景
     context.fillStyle = 'black';//防止
 }
 
+
 if (document.body.ontouchstart === undefined) {
     eraser.onclick = beginUsingEraser;
     brush.onclick = beginUsingBrush;
@@ -259,6 +260,14 @@ function beginUsingDownload() {
     setTimeout(function () {//半秒后自动移除CSS3动画的类
         download.classList.remove('moveToBottomClass');
     }, 820)
+
+    var url = canvas.toDataURL();
+    console.log(url)
+    var a = document.createElement("a")
+    a.href = url
+    a.download = "我的画儿"
+    document.body.appendChild(a)
+    a.click()
 }
 
 function cleanChildActive(parentArr) {//清除所有颜色按钮的放大状态

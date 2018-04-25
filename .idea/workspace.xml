@@ -19,16 +19,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5027548">
+    <splitter split-orientation="horizontal" split-proportion="0.42171946">
       <split-first>
-        <splitter split-orientation="horizontal" split-proportion="0.467052">
+        <splitter split-orientation="horizontal" split-proportion="0.6666667">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/index.html">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="816">
-                      <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
+                    <state relative-caret-position="-64">
+                      <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
                     </state>
                   </provider>
                 </entry>
@@ -40,8 +40,8 @@
               <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/style.css">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="495">
-                      <caret line="133" column="21" lean-forward="true" selection-start-line="133" selection-start-column="21" selection-end-line="133" selection-end-column="21" />
+                    <state relative-caret-position="608">
+                      <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="14" />
                     </state>
                   </provider>
                 </entry>
@@ -55,8 +55,8 @@
           <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="432">
-                  <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
+                <state relative-caret-position="461">
+                  <caret line="269" column="13" selection-start-line="269" selection-start-column="13" selection-end-line="269" selection-end-column="13" />
                   <folding>
                     <element signature="e#386#516#0" />
                     <element signature="n#!!block;n#drawLine#0" />
@@ -108,6 +108,7 @@
       <find>beginUsingBrush</find>
       <find>listenToUser</find>
       <find>drawCircle</find>
+      <find>beginUsingDownload</find>
     </findStrings>
     <replaceStrings>
       <replace>context</replace>
@@ -138,18 +139,30 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="602" />
-    <option name="y" value="45" />
-    <option name="width" value="1255" />
-    <option name="height" value="1073" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1232" />
+    <option name="width" value="1258" />
+    <option name="height" value="1448" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="OnlineDrawingBoard" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OnlineDrawingBoard" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
@@ -205,7 +218,7 @@
       <workItem from="1524361214716" duration="21774000" />
       <workItem from="1524459100665" duration="831000" />
       <workItem from="1524479362320" duration="11256000" />
-      <workItem from="1524569876563" duration="33351000" />
+      <workItem from="1524569876563" duration="36247000" />
     </task>
     <task id="LOCAL-00001" summary="添加onmousedown move up事件,可以画出不连续的小点">
       <created>1524365896227</created>
@@ -431,22 +444,36 @@
       <option name="project" value="LOCAL" />
       <updated>1524653493643</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="解决BUG:最开始画的线中的点是白色的,出现黑线不连续情况,">
+      <created>1524657718778</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1524657718778</updated>
+    </task>
+    <task id="LOCAL-00034" summary="固定位置">
+      <created>1524660814100</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1524660814100</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67212000" />
+    <option name="totallyTimeSpent" value="70108000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1999" height="1166" extended-state="6" />
+    <frame x="986" y="0" width="1006" height="1158" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.1556701" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17525773" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="7" sideWeight="0.5002547" side_tool="true" visible="true" weight="9.950249E-4" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5010309" side_tool="true" visible="true" weight="0.001003009" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49974528" visible="true" weight="9.950249E-4" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49896908" visible="true" weight="0.001003009" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -467,7 +494,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="添加onmousedown move up事件,可以画出不连续的小点" />
     <MESSAGE value="使用 canvas,画出点,点之间连线" />
     <MESSAGE value="1画板宽高设置为浏览器窗口宽高&#10;2添加橡皮擦,理清是否用画板和是否用橡皮的逻辑" />
     <MESSAGE value="1.优化代码结构,&#10;2.理清橡皮擦和画笔按钮逻辑" />
@@ -491,23 +517,25 @@
     <MESSAGE value="打开网页时,给画板一个白色背景,清空画板就是在给滑板一个白色大的矩形" />
     <MESSAGE value="将橡皮擦变为白色画笔,并且修复橡皮擦变为画笔的时候的颜色无法转变回来问题" />
     <MESSAGE value="优化代码结构,添加打印按钮,添加打印按钮动画" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化代码结构,添加打印按钮,添加打印按钮动画" />
+    <MESSAGE value="解决BUG:最开始画的线中的点是白色的,出现黑线不连续情况," />
+    <MESSAGE value="固定位置" />
+    <option name="LAST_COMMIT_MESSAGE" value="固定位置" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/index.html</url>
-          <line>53</line>
+          <line>52</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/main.js</url>
-          <line>91</line>
+          <line>94</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/main.js</url>
-          <line>107</line>
+          <line>110</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
@@ -616,22 +644,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
+        <state relative-caret-position="-64">
+          <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="133" column="21" lean-forward="true" selection-start-line="133" selection-start-column="21" selection-end-line="133" selection-end-column="21" />
+        <state relative-caret-position="608">
+          <caret line="13" column="21" lean-forward="true" selection-start-line="13" selection-start-column="21" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
+        <state relative-caret-position="461">
+          <caret line="269" column="13" selection-start-line="269" selection-start-column="13" selection-end-line="269" selection-end-column="13" />
           <folding>
             <element signature="e#386#516#0" />
             <element signature="n#!!block;n#drawLine#0" />
