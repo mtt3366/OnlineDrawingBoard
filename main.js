@@ -41,6 +41,64 @@ if (document.body.ontouchstart === undefined) {
 
 var color = document.getElementsByClassName("colors")[0];
 var colorLiArr = color.getElementsByTagName('li');
+var sizes = document.getElementById("sizes");
+var sizeArr = sizes.getElementsByTagName('li');
+var brushWidth = 2;
+
+
+function addLineWidthClick() {
+    for (let i = 0; i < sizeArr.length; i++) {
+        sizeArr[i].onclick = function () {
+            cleanChildActive(sizeArr);
+            // this.style.borderColor='#ff5113'
+            this.classList.add('active');
+            brushWidth = this.linew;
+        }
+    }
+}
+
+function addLineWidthTouch() {
+    for (let i = 0; i < sizeArr.length; i++) {
+        sizeArr[i].ontouchstart = function () {
+            cleanChildActive(sizeArr);
+            // this.style.borderColor='#ff5113'
+            this.classList.add('active');
+            brushWidth = this.linew;
+        }
+    }
+}
+
+
+for (let i = 0; i < sizeArr.length; i++) {
+    sizeArr[i].linew = (i + 1) * 2; //给线
+    // sizeArr[i].style.borderTop =sizeArr[i].linew+'px solid black';
+}
+if (document.body.ontouchstart === undefined) {
+    addLineWidthClick();
+//     thin.onclick = function () {
+//         brushWidth = "3";
+//         thin.classList.add('active');
+//         thick.classList.remove('active');
+//     }
+//     thick.onclick = function () {
+//         brushWidth = "6";
+//         thick.classList.add('active');
+//         thin.classList.remove('active');
+//     }
+
+} else {
+    addLineWidthTouch();
+//     thin.ontouchstart = function () {
+//         brushWidth = "3";
+//         thin.classList.add('active');
+//         thick.classList.remove('active');
+//     }
+//     thick.ontouchstart = function () {
+//         brushWidth = "6";
+//         thick.classList.add('active');
+//         thin.classList.remove('active');
+//     }
+}
 
 if (document.body.ontouchstart === undefined) {
     // red.onclick = function () {
@@ -167,7 +225,7 @@ function listenToUser(canvas) {
                     'x': x,
                     'y': y
                 };
-                drawCircle(x, y, 1);
+                drawCircle(x, y, brushWidth / 2);
             }
 
         };
@@ -187,7 +245,7 @@ function listenToUser(canvas) {
                     //实际上不需要这个圈,因为不管有没有这个圈,他都会连线.所以删掉这句代码,也不影响
 
                     //老点与新点连线
-                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 2);
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, brushWidth);
                     lastPoint = newPoint;//把现在这个新点变为下一个的老点.
                 }
             }
@@ -209,7 +267,7 @@ function listenToUser(canvas) {
                     'x': x,
                     'y': y
                 };
-                drawCircle(x, y, 1);
+                drawCircle(x, y, brushWidth / 2);
             }
         }
         canvas.ontouchmove = function (e) {
@@ -228,7 +286,7 @@ function listenToUser(canvas) {
                         'y': y
                     };
 
-                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, 2);
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, brushWidth);
                     lastPoint = newPoint;
                 }
             }
@@ -240,21 +298,23 @@ function listenToUser(canvas) {
 
 }
 
-
 function beginUsingBrush() { //用笔
     isUsingEraser = false;
     eraser.classList.remove("active");
+    eraser.classList.remove("eraseractive");
     brush.classList.add("active");
 }
+
 function beginUsingEraser() { //用橡皮
     isUsingEraser = true;
     eraser.classList.add("active");
+    eraser.classList.add("eraseractive");
     brush.classList.remove("active");
 }
 
-function cleanColorActive() {//清除所有颜色按钮的放大状态
-    for (let i = 0; i < colorLiArr.length; i++) {
-        colorLiArr[i].classList.remove("active");
+function cleanChildActive(parentArr) {//清除所有颜色按钮的放大状态
+    for (let i = 0; i < parentArr.length; i++) {
+        parentArr[i].classList.remove("active");
     }
 }
 
@@ -263,10 +323,12 @@ function addColorClickEvent() {//循环添加颜色点击事件
         colorLiArr[i].onclick = function () {
             context.strokeStyle = this.id;
             context.fillStyle = this.id;
-            cleanColorActive();//清除其他颜色的活动
+            cleanChildActive(colorLiArr);//清除其他颜色的活动
             this.classList.add("active");
             //把画笔弄成存在的
+            brush.style.fill = this.id;
             beginUsingBrush();
+
         }
     }
 }
@@ -276,9 +338,11 @@ function addColorTouchEvent() {//循环添加颜色触摸事件
         colorLiArr[i].ontouchstart = function () {
             context.strokeStyle = this.id;
             context.fillStyle = this.id;
-            cleanColorActive();
+            cleanChildActive(colorLiArr);
             this.classList.add("active");
+            brush.style.fill = this.id;
             beginUsingBrush();
+
         }
     }
 }
