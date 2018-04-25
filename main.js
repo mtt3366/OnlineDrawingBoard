@@ -25,18 +25,32 @@ var eraser = document.getElementById('eraser');
 var brush = document.getElementById("brush");
 var actions = document.getElementById('actions');
 var clearcanvas = document.getElementById("clearcanvas");
-
 var body = document.getElementsByTagName("body")[0];
-clearcanvas.onclick = function () {
-    context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-}
 
+// 橡皮擦,画笔,垃圾桶按钮
 if (document.body.ontouchstart === undefined) {
     eraser.onclick = beginUsingEraser;
     brush.onclick = beginUsingBrush;
+
+    clearcanvas.onclick = function (e) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        clearcanvas.classList.add('shakeClass');//点击一下执行CSS3动画
+        setTimeout(function () {//半秒后自动移除CSS3动画的类
+            clearcanvas.classList.remove('shakeClass');
+        },820)
+    }
 } else {
     eraser.ontouchstart = beginUsingEraser;
     brush.ontouchstart = beginUsingBrush;
+
+    clearcanvas.ontouchstart = function (e) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        clearcanvas.classList.add('shakeClass');
+        setTimeout(function () {
+            clearcanvas.classList.remove('shakeClass');
+        },820)
+    }
 }
 
 var color = document.getElementsByClassName("colors")[0];
@@ -45,32 +59,9 @@ var sizes = document.getElementById("sizes");
 var sizeArr = sizes.getElementsByTagName('li');
 var brushWidth = 2;
 
-
-function addLineWidthClick() {
-    for (let i = 0; i < sizeArr.length; i++) {
-        sizeArr[i].onclick = function () {
-            cleanChildActive(sizeArr);
-            // this.style.borderColor='#ff5113'
-            this.classList.add('active');
-            brushWidth = this.linew;
-        }
-    }
-}
-
-function addLineWidthTouch() {
-    for (let i = 0; i < sizeArr.length; i++) {
-        sizeArr[i].ontouchstart = function () {
-            cleanChildActive(sizeArr);
-            // this.style.borderColor='#ff5113'
-            this.classList.add('active');
-            brushWidth = this.linew;
-        }
-    }
-}
-
-
+//选择线
 for (let i = 0; i < sizeArr.length; i++) {
-    sizeArr[i].linew = (i + 1) * 2; //给线
+    sizeArr[i].linew = (i + 1) * 2; //给线加一个属性,线宽度方便赋值
     // sizeArr[i].style.borderTop =sizeArr[i].linew+'px solid black';
 }
 if (document.body.ontouchstart === undefined) {
@@ -100,6 +91,7 @@ if (document.body.ontouchstart === undefined) {
 //     }
 }
 
+//选择颜色
 if (document.body.ontouchstart === undefined) {
     // red.onclick = function () {
     //     context.strokeStyle = "red";
@@ -123,14 +115,6 @@ if (document.body.ontouchstart === undefined) {
     //     black.classList.add("active");
     // }
     addColorClickEvent();
-
-    clearcanvas.onclick = function (e) {
-        context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-        clearcanvas.classList.add('shakeClass');
-        setTimeout(function () {
-            clearcanvas.classList.remove('shakeClass');
-        },500)
-    }
 }
 else {
     // red.ontouchstart = function () {
@@ -154,13 +138,6 @@ else {
     //     black.classList.add("active");
     // }
     addColorTouchEvent();
-    clearcanvas.ontouchstart = function (e) {
-        context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
-        clearcanvas.classList.add('shakeClass');
-        setTimeout(function () {
-            clearcanvas.classList.remove('shakeClass');
-        },500)
-    }
 }
 
 // 函数
@@ -251,6 +228,7 @@ function listenToUser(canvas) {
                     };
                     drawCircle(x,y,brushWidth/2);//半径是1px,直径就是2px
                     //实际上不需要这个圈,因为不管有没有这个圈,他都会连线.所以删掉这句代码,也不影响
+                    //经测试,必须加上这个圈,不然就会出现线不连贯的情况.
 
                     //老点与新点连线
                     drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, brushWidth);
@@ -355,6 +333,28 @@ function addColorTouchEvent() {//循环添加颜色触摸事件
     }
 }
 
+
+function addLineWidthClick() {
+    for (let i = 0; i < sizeArr.length; i++) {
+        sizeArr[i].onclick = function () {
+            cleanChildActive(sizeArr);
+            // this.style.borderColor='#ff5113'
+            this.classList.add('active');
+            brushWidth = this.linew;
+        }
+    }
+}
+
+function addLineWidthTouch() {
+    for (let i = 0; i < sizeArr.length; i++) {
+        sizeArr[i].ontouchstart = function () {
+            cleanChildActive(sizeArr);
+            // this.style.borderColor='#ff5113'
+            this.classList.add('active');
+            brushWidth = this.linew;
+        }
+    }
+}
 
 /*
 
