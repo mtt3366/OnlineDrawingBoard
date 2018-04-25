@@ -26,11 +26,12 @@ var brush = document.getElementById("brush");
 var actions = document.getElementById('actions');
 var clearcanvas = document.getElementById("clearcanvas");
 var body = document.getElementsByTagName("body")[0];
+var choosedColor = 'black';//定义一个choosedColor变量,用来存当前选定的颜色,以免用橡皮擦的时候变成白色变不回来.
 
 // 橡皮擦,画笔,垃圾桶按钮,下载按钮
 window.onload = function () { //打开网页先给画板一个白色的背景
     context.fillStyle = 'white';
-    context.fillRect(0,0,canvas.width,canvas.height);
+    context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 if (document.body.ontouchstart === undefined) {
@@ -39,12 +40,12 @@ if (document.body.ontouchstart === undefined) {
 
     clearcanvas.onclick = function (e) {
         context.fillStyle = 'white';
-        context.fillRect(0,0,canvas.width,canvas.height);
+        context.fillRect(0, 0, canvas.width, canvas.height);
 
         clearcanvas.classList.add('shakeClass');//点击一下执行CSS3动画
         setTimeout(function () {//半秒后自动移除CSS3动画的类
             clearcanvas.classList.remove('shakeClass');
-        },820)
+        }, 820)
     }
 } else {
     eraser.ontouchstart = beginUsingEraser;
@@ -52,12 +53,12 @@ if (document.body.ontouchstart === undefined) {
 
     clearcanvas.ontouchstart = function (e) {
         context.fillStyle = 'white';
-        context.fillRect(0,0,canvas.width,canvas.height);
+        context.fillRect(0, 0, canvas.width, canvas.height);
 
         clearcanvas.classList.add('shakeClass');
         setTimeout(function () {
             clearcanvas.classList.remove('shakeClass');
-        },820)
+        }, 820)
     }
 }
 
@@ -150,10 +151,10 @@ else {
 
 // 函数
 //画线
-function drawLine(beginx, beginy, endx, endy, lineWidth) {//开始xy,结束xy,线宽度
+function drawLine(beginx, beginy, endx, endy, lineWidth, color) {//开始xy,结束xy,线宽度
     context.beginPath();
     context.lineWidth = lineWidth;//先声明线的长度,不然他直接画了
-    // context.strokeStyle = 'black';  //注释掉是因为如果不写,默认是黑色
+    context.strokeStyle = color;  //注释掉是因为如果不写,默认是黑色
     context.moveTo(beginx, beginy);
     context.lineTo(endx, endy);
     context.stroke();
@@ -161,9 +162,9 @@ function drawLine(beginx, beginy, endx, endy, lineWidth) {//开始xy,结束xy,�
 }
 
 //画圈
-function drawCircle(x, y, radius) {//画圆函数 ,xy圆心,radius半径
+function drawCircle(x, y, radius, color) {//画圆函数 ,xy圆心,radius半径
     context.beginPath();
-    // context.fillStyle = 'black';
+    context.fillStyle = color;
     context.arc(x, y, radius, 0, Math.PI * 2);
     context.fill();
 }
@@ -211,37 +212,41 @@ function listenToUser(canvas) {
             var x = e.clientX;
             var y = e.clientY;
             isUsingBoard = true;
-            if (isUsingEraser) {//
-                context.clearRect(x - 5, y - 5, 10, 10);
+
+            lastPoint = {//上一个点//设置成全局变量,好能接受的到
+                'x': x,
+                'y': y
+            };
+
+            if (isUsingEraser) {//用橡皮,把画笔颜色调成白色即可
+                drawCircle(x, y, brushWidth / 2, 'white');
             } else {//不用橡皮,用画笔
-                lastPoint = {//上一个点//设置成全局变量,好能接受的到
-                    'x': x,
-                    'y': y
-                };
                 drawCircle(x, y, brushWidth / 2);
             }
-
         };
 
         canvas.onmousemove = function (e) {
             var x = e.clientX;
             var y = e.clientY;
             if (isUsingBoard) {
-                if (isUsingEraser) {
-                    context.clearRect(x - 10, y - 10, 20, 20);
-                } else {//不用橡皮,用画笔
-                    newPoint = {//设置成全局变量,好能接受的到
-                        'x': x,
-                        'y': y
-                    };
-                    drawCircle(x,y,brushWidth/2);//半径是1px,直径就是2px
+
+                newPoint = {//设置成全局变量,好能接受的到
+                    'x': x,
+                    'y': y
+                };
+                if (isUsingEraser) {//如果用橡皮,那就是把点和线的颜色变成白色而已
+                    drawCircle(x, y, brushWidth / 2 ,'white');
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, brushWidth,'white');
+                }else{
+                    drawCircle(x, y, brushWidth / 2);//半径是1px,直径就是2px
                     //实际上不需要这个圈,因为不管有没有这个圈,他都会连线.所以删掉这句代码,也不影响
                     //经测试,必须加上这个圈,不然就会出现线不连贯的情况.
 
                     //老点与新点连线
                     drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, brushWidth);
-                    lastPoint = newPoint;//把现在这个新点变为下一个的老点.
                 }
+                lastPoint = newPoint;//把现在这个新点变为下一个的老点.
+
             }
         };
 
@@ -254,13 +259,16 @@ function listenToUser(canvas) {
             var x = e.touches[0].clientX;
             var y = e.touches[0].clientY;
             isUsingBoard = true;
-            if (isUsingEraser) {//
-                context.clearRect(x - 10, y - 10, 20, 20);
-            } else {
-                lastPoint = {
-                    'x': x,
-                    'y': y
-                };
+
+
+            lastPoint = {//上一个点//设置成全局变量,好能接受的到
+                'x': x,
+                'y': y
+            };
+
+            if (isUsingEraser) {//用橡皮,把画笔颜色调成白色即可
+                drawCircle(x, y, brushWidth / 2, 'white');
+            } else {//不用橡皮,用画笔
                 drawCircle(x, y, brushWidth / 2);
             }
         }
@@ -272,17 +280,24 @@ function listenToUser(canvas) {
             var x = e.touches[0].clientX;
             var y = e.touches[0].clientY;
             if (isUsingBoard) {
-                if (isUsingEraser) {
-                    context.clearRect(x - 5, y - 5, 10, 10);
-                } else {
-                    newPoint = {
-                        'x': x,
-                        'y': y
-                    };
-                    drawCircle(x,y,brushWidth/2);
+
+                newPoint = {//设置成全局变量,好能接受的到
+                    'x': x,
+                    'y': y
+                };
+                if (isUsingEraser) {//如果用橡皮,那就是把点和线的颜色变成白色而已
+                    drawCircle(x, y, brushWidth / 2 ,'white');
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, brushWidth,'white');
+                }else{
+                    drawCircle(x, y, brushWidth / 2);//半径是1px,直径就是2px
+                    //实际上不需要这个圈,因为不管有没有这个圈,他都会连线.所以删掉这句代码,也不影响
+                    //经测试,必须加上这个圈,不然就会出现线不连贯的情况.
+
+                    //老点与新点连线
                     drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, brushWidth);
-                    lastPoint = newPoint;
                 }
+                lastPoint = newPoint;//把现在这个新点变为下一个的老点.
+
             }
         }
         canvas.ontouchend = function (e) {
@@ -294,6 +309,10 @@ function listenToUser(canvas) {
 
 function beginUsingBrush() { //用笔
     isUsingEraser = false;
+    //颜色变成当先选定的颜色.
+    context.fillStyle = choosedColor;
+    context.strokeStyle = choosedColor;
+
     eraser.classList.remove("active");
     eraser.classList.remove("eraseractive");
     brush.classList.add("active");
@@ -317,6 +336,7 @@ function addColorClickEvent() {//循环添加颜色点击事件
         colorLiArr[i].onclick = function () {
             context.strokeStyle = this.id;
             context.fillStyle = this.id;
+            choosedColor = this.id;
             cleanChildActive(colorLiArr);//清除其他颜色的活动
             this.classList.add("active");
             //把画笔弄成存在的
@@ -332,6 +352,7 @@ function addColorTouchEvent() {//循环添加颜色触摸事件
         colorLiArr[i].ontouchstart = function () {
             context.strokeStyle = this.id;
             context.fillStyle = this.id;
+            choosedColor = this.id;
             cleanChildActive(colorLiArr);
             this.classList.add("active");
             brush.style.fill = this.id;
