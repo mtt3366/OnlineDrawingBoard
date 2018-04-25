@@ -126,6 +126,10 @@ if (document.body.ontouchstart === undefined) {
 
     clearcanvas.onclick = function (e) {
         context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+        clearcanvas.classList.add('shakeClass');
+        setTimeout(function () {
+            clearcanvas.classList.remove('shakeClass');
+        },500)
     }
 }
 else {
@@ -152,6 +156,10 @@ else {
     addColorTouchEvent();
     clearcanvas.ontouchstart = function (e) {
         context.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+        clearcanvas.classList.add('shakeClass');
+        setTimeout(function () {
+            clearcanvas.classList.remove('shakeClass');
+        },500)
     }
 }
 
