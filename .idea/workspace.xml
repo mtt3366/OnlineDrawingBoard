@@ -19,7 +19,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6860011">
+    <splitter split-orientation="horizontal" split-proportion="0.51645285">
       <split-first>
         <splitter split-orientation="horizontal" split-proportion="0.49471116">
           <split-first>
@@ -27,8 +27,8 @@
               <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/index.html">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="416">
-                      <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+                    <state relative-caret-position="528">
+                      <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
                     </state>
                   </provider>
                 </entry>
@@ -40,8 +40,8 @@
               <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/style.css">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="560">
-                      <caret line="34" column="22" lean-forward="true" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
+                    <state relative-caret-position="384">
+                      <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
                     </state>
                   </provider>
                 </entry>
@@ -55,8 +55,8 @@
           <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="501">
-                  <caret line="382" column="28" lean-forward="true" selection-start-line="382" selection-start-column="28" selection-end-line="382" selection-end-column="28" />
+                <state relative-caret-position="212">
+                  <caret line="250" column="37" lean-forward="true" selection-start-line="250" selection-start-column="37" selection-end-line="250" selection-end-column="37" />
                   <folding>
                     <element signature="e#386#516#0" />
                     <element signature="n#!!block;n#drawLine#0" />
@@ -65,7 +65,6 @@
                     <element signature="e#3548#3580#0" />
                     <element signature="n#!!block;n#setCanvasSize#0;n#!!block;n#autoSetCanvasSize#0" />
                     <element signature="n#!!block;n#beginUsingBrush#0" />
-                    <element signature="n#!!block;n#beginUsingEraser#0" />
                     <element signature="n#!!block;n#cleanColorActive#0" />
                     <element signature="n#!!block;n#addColorClickEvent#0" />
                     <element signature="n#!!block;n#addColorTouchEvent#0" />
@@ -109,6 +108,9 @@
       <find>listenToUser</find>
       <find>drawCircle</find>
       <find>beginUsingDownload</find>
+      <find>transition</find>
+      <find>beginUsingClearCanvas</find>
+      <find>choosedColor</find>
     </findStrings>
     <replaceStrings>
       <replace>context</replace>
@@ -218,7 +220,7 @@
       <workItem from="1524361214716" duration="21774000" />
       <workItem from="1524459100665" duration="831000" />
       <workItem from="1524479362320" duration="11256000" />
-      <workItem from="1524569876563" duration="37183000" />
+      <workItem from="1524569876563" duration="38784000" />
     </task>
     <task id="LOCAL-00001" summary="添加onmousedown move up事件,可以画出不连续的小点">
       <created>1524365896227</created>
@@ -472,11 +474,25 @@
       <option name="project" value="LOCAL" />
       <updated>1524661837236</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="删除橡皮筋效果测试">
+      <created>1524662556773</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1524662556773</updated>
+    </task>
+    <task id="LOCAL-00038" summary="优化动画时间.改为0.3秒,防止有时候画不出来">
+      <created>1524662960638</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1524662960638</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71044000" />
+    <option name="totallyTimeSpent" value="72645000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1999" height="1166" extended-state="6" />
@@ -508,8 +524,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1画板宽高设置为浏览器窗口宽高&#10;2添加橡皮擦,理清是否用画板和是否用橡皮的逻辑" />
-    <MESSAGE value="1.优化代码结构,&#10;2.理清橡皮擦和画笔按钮逻辑" />
     <MESSAGE value="移动端,touch特性控制,获取touch的触控坐标点" />
     <MESSAGE value="更新title" />
     <MESSAGE value="添加不让手机端滚动js代码" />
@@ -533,7 +547,9 @@
     <MESSAGE value="解决BUG:最开始画的线中的点是白色的,出现黑线不连续情况," />
     <MESSAGE value="固定位置" />
     <MESSAGE value="添加下载我的画功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加下载我的画功能" />
+    <MESSAGE value="删除橡皮筋效果测试" />
+    <MESSAGE value="优化动画时间.改为0.3秒,防止有时候画不出来" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化动画时间.改为0.3秒,防止有时候画不出来" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -576,7 +592,6 @@
             <element signature="e#3548#3580#0" />
             <element signature="n#!!block;n#setCanvasSize#0;n#!!block;n#autoSetCanvasSize#0" />
             <element signature="n#!!block;n#beginUsingBrush#0" />
-            <element signature="n#!!block;n#beginUsingEraser#0" />
             <element signature="n#!!block;n#cleanColorActive#0" />
             <element signature="n#!!block;n#addColorClickEvent#0" />
             <element signature="n#!!block;n#addColorTouchEvent#0" />
@@ -658,22 +673,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="25" column="10" lean-forward="true" selection-start-line="25" selection-start-column="10" selection-end-line="25" selection-end-column="10" />
+        <state relative-caret-position="528">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="34" column="22" lean-forward="true" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
+        <state relative-caret-position="384">
+          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="382" column="28" lean-forward="true" selection-start-line="382" selection-start-column="28" selection-end-line="382" selection-end-column="28" />
+        <state relative-caret-position="212">
+          <caret line="250" column="37" lean-forward="true" selection-start-line="250" selection-start-column="37" selection-end-line="250" selection-end-column="37" />
           <folding>
             <element signature="e#386#516#0" />
             <element signature="n#!!block;n#drawLine#0" />
@@ -682,7 +697,6 @@
             <element signature="e#3548#3580#0" />
             <element signature="n#!!block;n#setCanvasSize#0;n#!!block;n#autoSetCanvasSize#0" />
             <element signature="n#!!block;n#beginUsingBrush#0" />
-            <element signature="n#!!block;n#beginUsingEraser#0" />
             <element signature="n#!!block;n#cleanColorActive#0" />
             <element signature="n#!!block;n#addColorClickEvent#0" />
             <element signature="n#!!block;n#addColorTouchEvent#0" />

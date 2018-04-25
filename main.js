@@ -248,11 +248,13 @@ function beginUsingEraser() { //用橡皮
 function beginUsingClearCanvas() { //使用清屏按钮
     context.fillStyle = 'white';
     context.fillRect(0, 0, canvas.width, canvas.height);
-
+    // console.log(choosedColor)
+    context.fillStyle = choosedColor;//不要忘了把颜色变回去
     clearcanvas.classList.add('shakeClass');//点击一下执行CSS3动画
     setTimeout(function () {//半秒后自动移除CSS3动画的类
         clearcanvas.classList.remove('shakeClass');
     }, 820)
+
 }
 
 function beginUsingDownload() {
