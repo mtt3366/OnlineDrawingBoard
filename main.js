@@ -14,7 +14,6 @@ var isUsingEraser = false;
 // 2.监听鼠标事件
 listenToUser(canvas);
 
-
 /**
  * 理清  用画笔,用橡皮的思路
  * 1. 最开始画笔放大,有颜色
@@ -32,7 +31,11 @@ var download = document.getElementById("download");
 // 橡皮擦,画笔,垃圾桶按钮,下载按钮
 window.onload = function () { //打开网页先给画板一个白色的背景
     context.fillStyle = 'white';
+    //这里会出现一个bug,如果在这里加上这句话.会导致最开始画的线中的点是白色的,出现黑线不连续情况,
+    // 解决方法是把颜色变回黑色
     context.fillRect(0, 0, canvas.width, canvas.height);
+    //解决方法是把颜色变回黑色
+    context.fillStyle = 'black';//防止
 }
 
 if (document.body.ontouchstart === undefined) {
@@ -152,9 +155,9 @@ function listenToUser(canvas) {
                     'y': y
                 };
                 if (isUsingEraser) {//如果用橡皮,那就是把点和线的颜色变成白色而已
-                    drawCircle(x, y, brushWidth / 2 ,'white');
-                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, brushWidth,'white');
-                }else{
+                    drawCircle(x, y, brushWidth / 2, 'white');
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, brushWidth, 'white');
+                } else {
                     drawCircle(x, y, brushWidth / 2);//半径是1px,直径就是2px
                     //实际上不需要这个圈,因为不管有没有这个圈,他都会连线.所以删掉这句代码,也不影响
                     //经测试,必须加上这个圈,不然就会出现线不连贯的情况.
@@ -203,9 +206,9 @@ function listenToUser(canvas) {
                     'y': y
                 };
                 if (isUsingEraser) {//如果用橡皮,那就是把点和线的颜色变成白色而已
-                    drawCircle(x, y, brushWidth / 2 ,'white');
-                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, brushWidth,'white');
-                }else{
+                    drawCircle(x, y, brushWidth / 2, 'white');
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, brushWidth, 'white');
+                } else {
                     drawCircle(x, y, brushWidth / 2);//半径是1px,直径就是2px
                     //实际上不需要这个圈,因为不管有没有这个圈,他都会连线.所以删掉这句代码,也不影响
                     //经测试,必须加上这个圈,不然就会出现线不连贯的情况.
@@ -221,7 +224,6 @@ function listenToUser(canvas) {
             isUsingBoard = false;
         }
     }
-
 }
 
 function beginUsingBrush() { //用笔
@@ -280,6 +282,7 @@ function addColorClickEvent() {//循环添加颜色点击事件
         }
     }
 }
+
 function addColorTouchEvent() {//循环添加颜色触摸事件
     for (let i = 0; i < colorLiArr.length; i++) {
         colorLiArr[i].ontouchstart = function () {
@@ -305,6 +308,7 @@ function addLineWidthClick() {
         }
     }
 }
+
 function addLineWidthTouch() {
     for (let i = 0; i < sizeArr.length; i++) {
         sizeArr[i].ontouchstart = function () {
