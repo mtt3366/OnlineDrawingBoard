@@ -28,6 +28,7 @@ var clearcanvas = document.getElementById("clearcanvas");
 var body = document.getElementsByTagName("body")[0];
 var choosedColor = 'black';//定义一个choosedColor变量,用来存当前选定的颜色,以免用橡皮擦的时候变成白色变不回来.
 
+var download = document.getElementById("download");
 // 橡皮擦,画笔,垃圾桶按钮,下载按钮
 window.onload = function () { //打开网页先给画板一个白色的背景
     context.fillStyle = 'white';
@@ -37,29 +38,13 @@ window.onload = function () { //打开网页先给画板一个白色的背景
 if (document.body.ontouchstart === undefined) {
     eraser.onclick = beginUsingEraser;
     brush.onclick = beginUsingBrush;
-
-    clearcanvas.onclick = function (e) {
-        context.fillStyle = 'white';
-        context.fillRect(0, 0, canvas.width, canvas.height);
-
-        clearcanvas.classList.add('shakeClass');//点击一下执行CSS3动画
-        setTimeout(function () {//半秒后自动移除CSS3动画的类
-            clearcanvas.classList.remove('shakeClass');
-        }, 820)
-    }
+    clearcanvas.onclick = beginUsingClearCanvas;
+    download.onclick = beginUsingDownload;
 } else {
     eraser.ontouchstart = beginUsingEraser;
     brush.ontouchstart = beginUsingBrush;
-
-    clearcanvas.ontouchstart = function (e) {
-        context.fillStyle = 'white';
-        context.fillRect(0, 0, canvas.width, canvas.height);
-
-        clearcanvas.classList.add('shakeClass');
-        setTimeout(function () {
-            clearcanvas.classList.remove('shakeClass');
-        }, 820)
-    }
+    clearcanvas.ontouchstart = beginUsingClearCanvas;
+    download.ontouchstart = beginUsingDownload;
 }
 
 var color = document.getElementsByClassName("colors")[0];
@@ -68,86 +53,18 @@ var sizes = document.getElementById("sizes");
 var sizeArr = sizes.getElementsByTagName('li');
 var brushWidth = 2;
 
-//选择线
+//选择线粗细和颜色
 for (let i = 0; i < sizeArr.length; i++) {
     sizeArr[i].linew = (i + 1) * 2; //给线加一个属性,线宽度方便赋值
-    // sizeArr[i].style.borderTop =sizeArr[i].linew+'px solid black';
 }
 if (document.body.ontouchstart === undefined) {
-    addLineWidthClick();
-//     thin.onclick = function () {
-//         brushWidth = "3";
-//         thin.classList.add('active');
-//         thick.classList.remove('active');
-//     }
-//     thick.onclick = function () {
-//         brushWidth = "6";
-//         thick.classList.add('active');
-//         thin.classList.remove('active');
-//     }
-
+    addLineWidthClick();//添加选择线宽度的点击事件
+    addColorClickEvent();//添加选择颜色的点击事件
 } else {
-    addLineWidthTouch();
-//     thin.ontouchstart = function () {
-//         brushWidth = "3";
-//         thin.classList.add('active');
-//         thick.classList.remove('active');
-//     }
-//     thick.ontouchstart = function () {
-//         brushWidth = "6";
-//         thick.classList.add('active');
-//         thin.classList.remove('active');
-//     }
+    addLineWidthTouch();//添加选择线宽度的触摸事件
+    addColorTouchEvent();//添加选择颜色的点击事件
 }
 
-//选择颜色
-if (document.body.ontouchstart === undefined) {
-    // red.onclick = function () {
-    //     context.strokeStyle = "red";
-    //     cleanColorActive();
-    //     red.classList.add("active");
-    //
-    // }
-    // green.onclick = function () {
-    //     context.strokeStyle = "green";
-    //     cleanColorActive();
-    //     green.classList.add("active");
-    // }
-    // blue.onclick = function () {
-    //     context.strokeStyle = "blue";
-    //     cleanColorActive();
-    //     blue.classList.add("active");
-    // }
-    // black.onclick = function(){
-    //     context.strokeStyle = "black";
-    //     cleanColorActive();
-    //     black.classList.add("active");
-    // }
-    addColorClickEvent();
-}
-else {
-    // red.ontouchstart = function () {
-    //     context.strokeStyle = "red";
-    //     cleanColorActive();
-    //     red.classList.add("active");
-    // }
-    // green.ontouchstart = function () {
-    //     context.strokeStyle = "green";
-    //     cleanColorActive();
-    //     green.classList.add("active");
-    // }
-    // blue.ontouchstart = function () {
-    //     context.strokeStyle = "blue";
-    //     cleanColorActive();
-    //     blue.classList.add("active");
-    // }
-    // black.ontouchstart = function () {
-    //     context.strokeStyle = "black";
-    //     cleanColorActive();
-    //     black.classList.add("active");
-    // }
-    addColorTouchEvent();
-}
 
 // 函数
 //画线
@@ -325,6 +242,23 @@ function beginUsingEraser() { //用橡皮
     brush.classList.remove("active");
 }
 
+function beginUsingClearCanvas() { //使用清屏按钮
+    context.fillStyle = 'white';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
+    clearcanvas.classList.add('shakeClass');//点击一下执行CSS3动画
+    setTimeout(function () {//半秒后自动移除CSS3动画的类
+        clearcanvas.classList.remove('shakeClass');
+    }, 820)
+}
+
+function beginUsingDownload() {
+    download.classList.add('moveToBottomClass');//点击一下执行CSS3动画
+    setTimeout(function () {//半秒后自动移除CSS3动画的类
+        download.classList.remove('moveToBottomClass');
+    }, 820)
+}
+
 function cleanChildActive(parentArr) {//清除所有颜色按钮的放大状态
     for (let i = 0; i < parentArr.length; i++) {
         parentArr[i].classList.remove("active");
@@ -346,7 +280,6 @@ function addColorClickEvent() {//循环添加颜色点击事件
         }
     }
 }
-
 function addColorTouchEvent() {//循环添加颜色触摸事件
     for (let i = 0; i < colorLiArr.length; i++) {
         colorLiArr[i].ontouchstart = function () {
@@ -362,7 +295,6 @@ function addColorTouchEvent() {//循环添加颜色触摸事件
     }
 }
 
-
 function addLineWidthClick() {
     for (let i = 0; i < sizeArr.length; i++) {
         sizeArr[i].onclick = function () {
@@ -373,7 +305,6 @@ function addLineWidthClick() {
         }
     }
 }
-
 function addLineWidthTouch() {
     for (let i = 0; i < sizeArr.length; i++) {
         sizeArr[i].ontouchstart = function () {

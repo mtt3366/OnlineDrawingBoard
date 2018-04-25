@@ -138,13 +138,18 @@ svg.eraseractive{
     border-top-color: #ff5113;
     color: #ff5113;
 }
-
+.moveToBottomClass{
+    animation: moveToBottom 0.82s;
+}
 
 .shakeClass {
     animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     perspective: 1000px;
+}
+.actions>svg,.colors>li,.sizes>li{
+    cursor: pointer;
 }
 
 @keyframes shake {
@@ -167,4 +172,14 @@ svg.eraseractive{
 .dexcribe{
     position: fixed;
     opacity: 0;
+}
+
+@keyframes moveToBottom {
+    from {
+        margin-top: 10px;
+    }
+
+    to {
+        margin-top: 35px;
+    }
 }
