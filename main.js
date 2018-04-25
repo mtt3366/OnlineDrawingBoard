@@ -241,7 +241,7 @@ function listenToUser(canvas) {
                         'x': x,
                         'y': y
                     };
-                    // drawCircle(x,y,1);//半径是1px,直径就是2px
+                    drawCircle(x,y,brushWidth/2);//半径是1px,直径就是2px
                     //实际上不需要这个圈,因为不管有没有这个圈,他都会连线.所以删掉这句代码,也不影响
 
                     //老点与新点连线
@@ -285,7 +285,7 @@ function listenToUser(canvas) {
                         'x': x,
                         'y': y
                     };
-
+                    drawCircle(x,y,brushWidth/2);
                     drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y, brushWidth);
                     lastPoint = newPoint;
                 }

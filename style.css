@@ -162,3 +162,7 @@ svg.eraseractive{
         transform: translate3d(10px, 8px, 10px);
     }
 }
+.dexcribe{
+    position: fixed;
+    opacity: 0;
+}
