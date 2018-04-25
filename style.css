@@ -38,6 +38,8 @@ body {
 
 .actions svg {
     fill: black;
+    width: 2em;
+    height: 2em;
     margin: 10px;
     /*fill: #ff5113;*/
     vertical-align: top;

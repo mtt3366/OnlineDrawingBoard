@@ -27,13 +27,19 @@ var actions = document.getElementById('actions');
 var clearcanvas = document.getElementById("clearcanvas");
 var body = document.getElementsByTagName("body")[0];
 
-// 橡皮擦,画笔,垃圾桶按钮
+// 橡皮擦,画笔,垃圾桶按钮,下载按钮
+window.onload = function () { //打开网页先给画板一个白色的背景
+    context.fillStyle = 'white';
+    context.fillRect(0,0,canvas.width,canvas.height);
+}
+
 if (document.body.ontouchstart === undefined) {
     eraser.onclick = beginUsingEraser;
     brush.onclick = beginUsingBrush;
 
     clearcanvas.onclick = function (e) {
-        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = 'white';
+        context.fillRect(0,0,canvas.width,canvas.height);
 
         clearcanvas.classList.add('shakeClass');//点击一下执行CSS3动画
         setTimeout(function () {//半秒后自动移除CSS3动画的类
@@ -45,7 +51,9 @@ if (document.body.ontouchstart === undefined) {
     brush.ontouchstart = beginUsingBrush;
 
     clearcanvas.ontouchstart = function (e) {
-        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = 'white';
+        context.fillRect(0,0,canvas.width,canvas.height);
+
         clearcanvas.classList.add('shakeClass');
         setTimeout(function () {
             clearcanvas.classList.remove('shakeClass');

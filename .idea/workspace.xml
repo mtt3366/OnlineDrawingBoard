@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="675471fe-b21e-4450-9aa2-c0e3e77d8200" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
@@ -28,8 +29,8 @@
               <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/index.html">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="207">
-                      <caret line="16" column="20" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="20" />
+                    <state relative-caret-position="512">
+                      <caret line="35" column="55" lean-forward="true" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
                     </state>
                   </provider>
                 </entry>
@@ -41,8 +42,8 @@
               <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/style.css">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="355">
-                      <caret line="142" column="36" lean-forward="true" selection-start-line="142" selection-start-column="36" selection-end-line="142" selection-end-column="36" />
+                    <state relative-caret-position="591">
+                      <caret line="169" column="1" lean-forward="true" selection-start-line="169" selection-start-column="1" selection-end-line="169" selection-end-column="1" />
                     </state>
                   </provider>
                 </entry>
@@ -56,13 +57,24 @@
           <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/main.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="399">
-                  <caret line="161" column="15" lean-forward="true" selection-start-line="161" selection-start-column="15" selection-end-line="161" selection-end-column="15" />
+                <state relative-caret-position="544">
+                  <caret line="41" column="57" lean-forward="true" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
                   <folding>
+                    <element signature="e#386#516#0" />
                     <element signature="e#1783#1818#0" />
                     <element signature="e#2112#2152#0" />
                     <element signature="e#1266#1296#0" />
                     <element signature="e#2063#2098#0" />
+                    <element signature="n#!!block;n#drawLine#0" />
+                    <element signature="n#!!block;n#autoSetCanvasSize#0" />
+                    <element signature="e#3436#3450#0" />
+                    <element signature="e#3548#3580#0" />
+                    <element signature="n#!!block;n#setCanvasSize#0;n#!!block;n#autoSetCanvasSize#0" />
+                    <element signature="n#!!block;n#beginUsingBrush#0" />
+                    <element signature="n#!!block;n#cleanColorActive#0" />
+                    <element signature="n#!!block;n#addColorTouchEvent#0" />
+                    <element signature="n#!!block;n#addLineWidthClick#0" />
+                    <element signature="n#!!block;n#addLineWidthTouch#0" />
                   </folding>
                 </state>
               </provider>
@@ -93,10 +105,13 @@
       <find>fill</find>
       <find>beginUsingBurush</find>
       <find>padding</find>
-      <find>listenToUser</find>
       <find>cleanChildActive</find>
       <find>beginUsingBrush</find>
+      <find>clearcanvas</find>
       <find>beginUsingEraser</find>
+      <find>listenToUser</find>
+      <find>addColorClickEvent</find>
+      <find>drawCircle</find>
     </findStrings>
     <replaceStrings>
       <replace>context</replace>
@@ -112,8 +127,8 @@
       <list>
         <option value="$PROJECT_DIR$/index2.html" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/style.css" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/main.js" />
       </list>
     </option>
@@ -194,7 +209,7 @@
       <workItem from="1524361214716" duration="21774000" />
       <workItem from="1524459100665" duration="831000" />
       <workItem from="1524479362320" duration="11256000" />
-      <workItem from="1524569876563" duration="24781000" />
+      <workItem from="1524569876563" duration="27638000" />
     </task>
     <task id="LOCAL-00001" summary="添加onmousedown move up事件,可以画出不连续的小点">
       <created>1524365896227</created>
@@ -385,11 +400,25 @@
       <option name="project" value="LOCAL" />
       <updated>1524644226914</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="修复垃圾桶只能都抖动一次的BUG">
+      <created>1524646157480</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1524646157480</updated>
+    </task>
+    <task id="LOCAL-00029" summary="优化代码结构">
+      <created>1524647007973</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1524647007973</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58642000" />
+    <option name="totallyTimeSpent" value="61499000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1997" height="1166" extended-state="6" />
@@ -438,30 +467,31 @@
     <MESSAGE value="safair无法禁止滚动,只有qq上的浏览器才行" />
     <MESSAGE value="添加黑色,并优化画笔逻辑,点颜色的时候自动切换到画笔" />
     <MESSAGE value="优化点击颜色的逻辑,优化代码结构" />
-    <MESSAGE value="优化代码结构" />
     <MESSAGE value="优化线粗细,优化画笔颜色,点击什么颜色,画笔就变成什么颜色," />
     <MESSAGE value="修复两个连线之间断裂的BUG,只要把圆加上去就行了,每次在两个连线之间加一个圆点即可" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复两个连线之间断裂的BUG,只要把圆加上去就行了,每次在两个连线之间加一个圆点即可" />
+    <MESSAGE value="修复垃圾桶只能都抖动一次的BUG" />
+    <MESSAGE value="优化代码结构" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化代码结构" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/index.html</url>
-          <line>50</line>
+          <line>53</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/main.js</url>
-          <line>187</line>
+          <line>172</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/main.js</url>
-          <line>203</line>
+          <line>188</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -477,10 +507,21 @@
         <state relative-caret-position="2320">
           <caret line="145" column="10" lean-forward="true" selection-start-line="145" selection-start-column="10" selection-end-line="145" selection-end-column="10" />
           <folding>
+            <element signature="e#386#516#0" />
             <element signature="e#1783#1818#0" />
             <element signature="e#2112#2152#0" />
             <element signature="e#1266#1296#0" />
             <element signature="e#2063#2098#0" />
+            <element signature="n#!!block;n#drawLine#0" />
+            <element signature="n#!!block;n#autoSetCanvasSize#0" />
+            <element signature="e#3436#3450#0" />
+            <element signature="e#3548#3580#0" />
+            <element signature="n#!!block;n#setCanvasSize#0;n#!!block;n#autoSetCanvasSize#0" />
+            <element signature="n#!!block;n#beginUsingBrush#0" />
+            <element signature="n#!!block;n#cleanColorActive#0" />
+            <element signature="n#!!block;n#addColorTouchEvent#0" />
+            <element signature="n#!!block;n#addLineWidthClick#0" />
+            <element signature="n#!!block;n#addLineWidthTouch#0" />
           </folding>
         </state>
       </provider>
@@ -557,27 +598,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="16" column="20" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="20" />
+        <state relative-caret-position="512">
+          <caret line="35" column="55" lean-forward="true" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="142" column="36" lean-forward="true" selection-start-line="142" selection-start-column="36" selection-end-line="142" selection-end-column="36" />
+        <state relative-caret-position="591">
+          <caret line="169" column="1" lean-forward="true" selection-start-line="169" selection-start-column="1" selection-end-line="169" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="161" column="15" lean-forward="true" selection-start-line="161" selection-start-column="15" selection-end-line="161" selection-end-column="15" />
+        <state relative-caret-position="544">
+          <caret line="41" column="57" lean-forward="true" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
           <folding>
+            <element signature="e#386#516#0" />
             <element signature="e#1783#1818#0" />
             <element signature="e#2112#2152#0" />
             <element signature="e#1266#1296#0" />
             <element signature="e#2063#2098#0" />
+            <element signature="n#!!block;n#drawLine#0" />
+            <element signature="n#!!block;n#autoSetCanvasSize#0" />
+            <element signature="e#3436#3450#0" />
+            <element signature="e#3548#3580#0" />
+            <element signature="n#!!block;n#setCanvasSize#0;n#!!block;n#autoSetCanvasSize#0" />
+            <element signature="n#!!block;n#beginUsingBrush#0" />
+            <element signature="n#!!block;n#cleanColorActive#0" />
+            <element signature="n#!!block;n#addColorTouchEvent#0" />
+            <element signature="n#!!block;n#addLineWidthClick#0" />
+            <element signature="n#!!block;n#addLineWidthTouch#0" />
           </folding>
         </state>
       </provider>
