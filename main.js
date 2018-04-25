@@ -377,7 +377,8 @@ context.fill();//自动填充
 //     ev.preventDefault();
 //     // 阻止滑动后的后续的默认事件
 // }
-
+//经测试,上面不行
 document.body.addEventListener('touchmove', function (e) {
     e.preventDefault(); //阻止默认的处理方式(阻止下拉滑动的效果)
 }, {passive: false}); //passive 参数不能省略，用来兼容ios和android
+// 参考这里https://segmentfault.com/a/1190000014134234

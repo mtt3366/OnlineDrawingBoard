@@ -56,7 +56,7 @@ html{
     /*fill: #ff5113;*/
     vertical-align: top;
 
-    transition: all 0.5s;
+    transition: all 0.3s;
 }
 
 .actions svg:nth-child(1), svg:nth-child(3) {
@@ -93,7 +93,7 @@ svg.eraseractive{
     margin-bottom: 20px;
     border-radius: 50%;
 
-    transition: all 0.5s;
+    transition: all 0.3s;
 }
 
 .colors li#black{
